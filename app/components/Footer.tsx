@@ -38,16 +38,17 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <svg width="24" height="24" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-                <rect width="28" height="28" rx="6" fill="url(#footerLogoGrad)" />
-                <path d="M7 14L14 7L21 14L14 21L7 14Z" stroke="white" strokeWidth="1.5" fill="none" />
-                <circle cx="14" cy="14" r="3" fill="white" />
+              <svg width="28" height="28" viewBox="0 0 200 200" fill="none" aria-hidden="true">
                 <defs>
-                  <linearGradient id="footerLogoGrad" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#0D7A6A" />
-                    <stop offset="1" stopColor="#F59E0B" />
+                  <linearGradient id="footerJLGrad" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+                    <stop offset="0%" stopColor="#0D7A6A"/>
+                    <stop offset="100%" stopColor="#059669"/>
                   </linearGradient>
                 </defs>
+                <path d="M 112,22 L 112,148 C 130,148 152,146 174,141" stroke="url(#footerJLGrad)" strokeWidth="20" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M 112,22 C 100,12 80,10 62,20 C 44,32 34,58 34,86 C 34,112 44,132 52,142 C 58,150 54,160 44,163 C 34,165 24,157 24,146" stroke="url(#footerJLGrad)" strokeWidth="20" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M 24,146 C 18,132 24,114 38,112 C 52,110 60,124 54,138" stroke="url(#footerJLGrad)" strokeWidth="13" strokeLinecap="round"/>
+                <path d="M 152,8 L 157,21 L 172,26 L 157,31 L 152,44 L 147,31 L 132,26 L 147,21 Z" fill="#F59E0B"/>
               </svg>
               <span className="font-heading font-semibold text-text-primary">Jabon Labs</span>
             </div>
