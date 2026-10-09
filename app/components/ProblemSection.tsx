@@ -53,7 +53,7 @@ export default function ProblemSection() {
               style={{ boxShadow: '0 2px 16px rgba(28,23,20,0.06)' }}
             >
               <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
-                style={{ background: '#FFF7ED', color: 'var(--color-secondary)' }}>
+                style={{ background: 'linear-gradient(135deg, #D1FAE5, #A7F3D0)', color: 'var(--color-primary)' }}>
                 <p.Icon className="w-5 h-5" />
               </div>
               <h3 className="font-heading font-semibold text-text-primary text-base mb-2">{p.title}</h3>

@@ -66,7 +66,7 @@ export default function ProductSection() {
             >
               <div
                 className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-                style={{ background: '#F0FDF9', color: 'var(--color-primary)' }}
+                style={{ background: 'linear-gradient(135deg, #D1FAE5, #A7F3D0)', color: 'var(--color-primary)' }}
               >
                 <f.Icon className="w-6 h-6" />
               </div>

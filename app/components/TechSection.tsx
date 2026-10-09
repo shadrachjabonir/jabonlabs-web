@@ -63,7 +63,7 @@ export default function TechSection() {
               <div className="flex items-start gap-5">
                 <div
                   className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
-                  style={{ background: '#F0FDF9', border: '1px solid #D1FAE5', color: 'var(--color-primary)' }}
+                  style={{ background: 'linear-gradient(135deg, #D1FAE5, #A7F3D0)', color: 'var(--color-primary)' }}
                 >
                   <p.Icon className="w-6 h-6" />
                 </div>
