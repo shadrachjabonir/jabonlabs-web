@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { DM_Sans, Space_Grotesk } from 'next/font/google'
 import './globals.css'
+import ScrollRevealInit from './components/ScrollRevealInit'
 
 // ─── Font Loading via next/font ──────────────────────────────────────────
 // next/font handles self-hosting — no external network request at runtime
@@ -68,7 +69,10 @@ export default function RootLayout({
         suppressHydrationWarning is safe here — it only suppresses warnings on the
         <html> element itself, which Next.js sometimes patches for theme detection.
       */}
-      <body className="font-body antialiased">{children}</body>
+      <body className="font-body antialiased bg-background text-text-primary">
+        <ScrollRevealInit />
+        {children}
+      </body>
     </html>
   )
 }

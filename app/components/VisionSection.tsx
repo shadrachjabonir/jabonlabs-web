@@ -1,110 +1,84 @@
-// ─── VisionSection ──────────────────────────────────────────────────────────
-// Cinematic full-width section establishing Jabon Labs' long-term trajectory.
-// Large type, star-field background, minimal content.
+// ─── VisionSection ────────────────────────────────────────────────────────────
+// Warm, bright cinematic vision statement.
+
+const pillars = [
+  {
+    icon: '◎',
+    title: 'Safer Communities',
+    body: 'Real-time intelligence that keeps every child accounted for — from gate to home.',
+  },
+  {
+    icon: '⬡',
+    title: 'Smarter Systems',
+    body: 'AI agents that coordinate across stakeholders, anticipating problems before they happen.',
+  },
+  {
+    icon: '△',
+    title: 'Broader Impact',
+    body: 'From school transport to healthcare logistics to infrastructure — intelligence wherever life matters most.',
+  },
+]
 
 export default function VisionSection() {
   return (
     <section
       id="vision"
-      className="relative py-32 px-4 sm:px-6 lg:px-8 overflow-hidden"
-      aria-label="Vision"
+      className="relative py-28 overflow-hidden"
+      aria-label="Our vision"
+      style={{ background: 'linear-gradient(160deg, #F0FDF9 0%, #FDFCFB 40%, #FFFBEB 100%)' }}
     >
-      {/* ── Star-field background ── */}
-      {/*
-        TODO: Replace with a canvas-based star-field or Three.js particle system.
-        Current implementation uses CSS radial gradients as a lightweight fallback.
-      */}
+      {/* Decorative warm arc */}
       <div
-        className="absolute inset-0"
-        style={{
-          background: 'linear-gradient(to bottom, #050510 0%, #080818 50%, #050510 100%)',
-        }}
+        className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
-      />
-      {/* Simulated stars */}
-      <div
-        className="absolute inset-0 opacity-40"
-        style={{
-          backgroundImage: `
-            radial-gradient(1px 1px at 20% 15%, rgba(255,255,255,0.8) 0%, transparent 100%),
-            radial-gradient(1px 1px at 70% 25%, rgba(255,255,255,0.6) 0%, transparent 100%),
-            radial-gradient(1px 1px at 40% 60%, rgba(255,255,255,0.7) 0%, transparent 100%),
-            radial-gradient(1px 1px at 85% 45%, rgba(255,255,255,0.5) 0%, transparent 100%),
-            radial-gradient(1px 1px at 10% 80%, rgba(255,255,255,0.6) 0%, transparent 100%),
-            radial-gradient(1px 1px at 55% 35%, rgba(255,255,255,0.4) 0%, transparent 100%),
-            radial-gradient(1px 1px at 90% 70%, rgba(255,255,255,0.7) 0%, transparent 100%),
-            radial-gradient(1px 1px at 30% 90%, rgba(255,255,255,0.5) 0%, transparent 100%),
-            radial-gradient(2px 2px at 60% 80%, rgba(0,200,255,0.4) 0%, transparent 100%),
-            radial-gradient(1px 1px at 75% 10%, rgba(123,97,255,0.5) 0%, transparent 100%)
-          `,
-        }}
-        aria-hidden="true"
-      />
-      {/* Centre glow */}
-      <div
-        className="absolute inset-0 opacity-20"
-        style={{
-          background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(0,200,255,0.15) 0%, transparent 70%)',
-        }}
-        aria-hidden="true"
-      />
+      >
+        <svg className="absolute top-0 left-0 w-full" viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path d="M0,60 Q360,0 720,60 Q1080,120 1440,60 L1440,0 L0,0 Z" fill="rgba(13,122,106,0.04)" />
+        </svg>
+      </div>
 
-      {/* ── Content ── */}
-      <div className="relative max-w-4xl mx-auto text-center">
-        <p className="text-primary font-heading text-sm uppercase tracking-widest font-semibold mb-8">
-          The Long Arc
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Label */}
+        <p className="reveal text-center font-heading text-sm uppercase tracking-widest font-semibold mb-5"
+           style={{ color: 'var(--color-primary)' }}>
+          Our Vision
         </p>
 
+        {/* Big statement */}
         <h2
-          className="font-heading font-bold text-text-primary mb-8"
+          className="reveal reveal-delay-1 font-heading font-bold text-text-primary text-center mx-auto max-w-4xl mb-6"
           style={{
-            fontSize: 'clamp(2rem, 4vw, 3.5rem)',
-            lineHeight: '1.15',
+            fontSize: 'clamp(2rem, 4.5vw, 3.5rem)',
+            lineHeight: '1.12',
             letterSpacing: '-0.02em',
           }}
         >
-          We start with children{' '}
-          <span className="gradient-text">getting home safely.</span>
-          <br />
-          We don&rsquo;t stop there.
+          The most important systems in our lives deserve the most intelligent ones.
         </h2>
 
-        <p
-          className="text-text-secondary font-body text-lg mb-12 max-w-2xl mx-auto"
-          style={{ lineHeight: '1.75' }}
-        >
-          Jabon Labs is a technology company in the deepest sense. Software and AI today, broader
-          scientific disciplines tomorrow — materials, biology, computation, space. Wherever technology
-          can meaningfully extend what it means to be human in this universe, that is where we intend
-          to go.
+        <p className="reveal reveal-delay-2 font-body text-text-secondary text-center mx-auto max-w-2xl mb-16"
+           style={{ fontSize: '1.1rem', lineHeight: '1.75' }}>
+          We start with school transport. We don&rsquo;t stop there.
         </p>
 
-        {/* Three vision pillars */}
-        <div className="grid sm:grid-cols-3 gap-6 text-left">
-          {[
-            {
-              headline: 'Systems That Help',
-              body: 'We engineer for real, high-stakes problems — not demos. Every product must make a measurable positive difference in at least one life.',
-            },
-            {
-              headline: 'Persist Humanity',
-              body: 'Our decisions carry a hundred-year horizon. Technology is humanity\'s most powerful lever for survival and flourishing.',
-            },
-            {
-              headline: 'Radical Efficiency',
-              body: 'Friction is a cost. We build to eliminate it — in transport, in decisions, in daily life — so human effort goes where it matters.',
-            },
-          ].map((pillar) => (
+        {/* Pillars */}
+        <div className="grid md:grid-cols-3 gap-8">
+          {pillars.map((p, i) => (
             <div
-              key={pillar.headline}
-              className="p-5 rounded-xl bg-card/50 glow-border backdrop-blur-sm"
+              key={p.title}
+              className={`reveal reveal-delay-${i + 2} card-hover rounded-2xl bg-white border border-border p-8`}
+              style={{ boxShadow: '0 4px 24px rgba(13,122,106,0.06)' }}
             >
-              <h3 className="font-heading font-semibold text-text-primary text-sm mb-2">
-                {pillar.headline}
-              </h3>
-              <p className="text-text-secondary font-body text-xs" style={{ lineHeight: '1.65' }}>
-                {pillar.body}
-              </p>
+              <div
+                className="w-12 h-12 rounded-xl flex items-center justify-center text-xl mb-5"
+                style={{ background: 'linear-gradient(135deg, #D1FAE5, #A7F3D0)', color: 'var(--color-primary)' }}
+                aria-hidden="true"
+              >
+                {p.icon}
+              </div>
+              <h3 className="font-heading font-semibold text-text-primary text-lg mb-2">{p.title}</h3>
+              <p className="font-body text-text-secondary text-sm leading-relaxed">{p.body}</p>
             </div>
           ))}
         </div>

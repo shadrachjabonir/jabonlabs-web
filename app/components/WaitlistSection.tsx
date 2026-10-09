@@ -2,33 +2,21 @@
 
 import { useState } from 'react'
 
-// ─── WaitlistSection ──────────────────────────────────────────────────────
-// Email capture CTA. Single-focus: one headline, one field, one button.
-//
-// TODO: Wire up form submission to your backend API or email platform
-// (e.g. Resend, Mailchimp, Loops.so). Replace handleSubmit with a real API call.
-// Consider adding a CSRF token for production forms.
-
 export default function WaitlistSection() {
-  const [email, setEmail] = useState('')
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
-  const [errorMsg, setErrorMsg] = useState('')
+  const [email,    setEmail]  = useState('')
+  const [status,   setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [errorMsg, setError]  = useState('')
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setErrorMsg('Please enter a valid email address.')
+      setError('Please enter a valid email address.')
       setStatus('error')
       return
     }
-
     setStatus('loading')
-    setErrorMsg('')
-
-    // TODO: Replace with actual API call, e.g.:
-    // const res = await fetch('/api/waitlist', { method: 'POST', body: JSON.stringify({ email }) })
-    // Simulate network delay for now
+    setError('')
+    // TODO: Replace with real API — e.g. POST /api/waitlist
     await new Promise((r) => setTimeout(r, 800))
     setStatus('success')
   }
@@ -37,32 +25,33 @@ export default function WaitlistSection() {
     <section
       id="waitlist"
       className="py-24 px-4 sm:px-6 lg:px-8"
+      style={{ background: 'linear-gradient(160deg, #F0FDF9 0%, #FDFCFB 50%, #FFFBEB 100%)' }}
       aria-label="Join the waitlist"
     >
       <div className="max-w-2xl mx-auto text-center">
         <div
-          className="rounded-2xl p-10 sm:p-14 glow-border bg-card relative overflow-hidden"
-          style={{
-            background: 'linear-gradient(135deg, rgba(0,200,255,0.05) 0%, rgba(123,97,255,0.05) 100%), var(--color-card)',
-          }}
+          className="reveal rounded-2xl p-10 sm:p-14 bg-white relative overflow-hidden"
+          style={{ boxShadow: '0 8px 48px rgba(13,122,106,0.12)', border: '1px solid #E8E3DA' }}
         >
-          {/* Corner glow */}
+          {/* Warm accent blob */}
           <div
-            className="absolute -top-10 -right-10 w-40 h-40 rounded-full opacity-20 blur-3xl"
-            style={{ background: 'var(--color-primary)' }}
+            className="absolute -top-12 -right-12 w-48 h-48 rounded-full opacity-30 blur-3xl pointer-events-none"
+            style={{ background: 'radial-gradient(circle, #A7F3D0, #6EE7B7)' }}
+            aria-hidden="true"
+          />
+          <div
+            className="absolute -bottom-12 -left-12 w-40 h-40 rounded-full opacity-25 blur-3xl pointer-events-none"
+            style={{ background: 'radial-gradient(circle, #FDE68A, #FCD34D)' }}
             aria-hidden="true"
           />
 
-          <p className="text-primary font-heading text-sm uppercase tracking-widest font-semibold mb-4">
+          <p className="font-heading text-sm uppercase tracking-widest font-semibold mb-4"
+             style={{ color: 'var(--color-primary)' }}>
             Early Access
           </p>
           <h2
             className="font-heading font-bold text-text-primary mb-3"
-            style={{
-              fontSize: 'clamp(1.5rem, 3vw, 2.25rem)',
-              lineHeight: '1.2',
-              letterSpacing: '-0.01em',
-            }}
+            style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', lineHeight: '1.2', letterSpacing: '-0.01em' }}
           >
             Be the first to bring Kawan to your school.
           </h2>
@@ -72,9 +61,12 @@ export default function WaitlistSection() {
 
           {status === 'success' ? (
             <div className="flex flex-col items-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-success/10 border border-success/30 flex items-center justify-center">
+              <div
+                className="w-12 h-12 rounded-full flex items-center justify-center"
+                style={{ background: '#D1FAE5', border: '1px solid #A7F3D0' }}
+              >
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                  <path d="M4 10l5 5 7-7" stroke="#10B981" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M4 10l5 5 7-7" stroke="#059669" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
               <p className="font-heading font-semibold text-text-primary">You&rsquo;re on the list.</p>
@@ -86,9 +78,7 @@ export default function WaitlistSection() {
             <form onSubmit={handleSubmit} noValidate>
               <div className="flex flex-col sm:flex-row gap-3">
                 <div className="flex-1">
-                  <label htmlFor="waitlist-email" className="sr-only">
-                    Email address
-                  </label>
+                  <label htmlFor="waitlist-email" className="sr-only">Email address</label>
                   <input
                     id="waitlist-email"
                     type="email"
@@ -97,11 +87,13 @@ export default function WaitlistSection() {
                     required
                     placeholder="your@email.com"
                     value={email}
-                    onChange={(e) => {
-                      setEmail(e.target.value)
-                      if (status === 'error') setStatus('idle')
+                    onChange={(e) => { setEmail(e.target.value); if (status === 'error') setStatus('idle') }}
+                    className="w-full px-4 py-3 rounded-xl font-body text-sm text-text-primary placeholder:text-text-muted focus:outline-none transition-all duration-150"
+                    style={{
+                      background: 'var(--color-surface)',
+                      border: `1px solid ${status === 'error' ? '#DC2626' : '#E8E3DA'}`,
+                      boxShadow: status === 'error' ? '0 0 0 3px rgba(220,38,38,0.1)' : undefined,
                     }}
-                    className="w-full px-4 py-3 rounded-xl bg-background border border-border text-text-primary font-body text-sm placeholder:text-text-muted focus:outline-none focus:border-primary transition-colors duration-150"
                     aria-invalid={status === 'error'}
                     aria-describedby={status === 'error' ? 'waitlist-error' : undefined}
                   />
@@ -109,18 +101,15 @@ export default function WaitlistSection() {
                 <button
                   type="submit"
                   disabled={status === 'loading'}
-                  className="px-6 py-3 rounded-xl bg-primary text-background font-heading font-semibold text-sm hover:bg-primary-dark disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 shadow-glow-cyan cursor-pointer whitespace-nowrap"
+                  className="px-6 py-3 rounded-xl font-heading font-semibold text-sm text-white disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5 whitespace-nowrap"
+                  style={{ background: 'var(--color-primary)', boxShadow: '0 4px 16px rgba(13,122,106,0.25)' }}
                 >
                   {status === 'loading' ? 'Sending…' : 'Request Early Access'}
                 </button>
               </div>
 
               {status === 'error' && (
-                <p
-                  id="waitlist-error"
-                  role="alert"
-                  className="mt-2 text-danger font-body text-xs text-left"
-                >
+                <p id="waitlist-error" role="alert" className="mt-2 font-body text-xs text-left" style={{ color: '#DC2626' }}>
                   {errorMsg}
                 </p>
               )}

@@ -1,50 +1,69 @@
 'use client'
 
-// ─── HeroSection ─────────────────────────────────────────────────────────
-// Full-viewport hero with animated grid background.
-// Reduced-motion: static background, no animations.
-//
-// TODO (AI integration point):
-//   Replace the static grid with a live multi-agent activity visualiser —
-//   e.g. a canvas-based network graph showing agent nodes communicating in
-//   real time. Import and mount it here as a client component.
+import { useEffect, useRef } from 'react'
 
 export default function HeroSection() {
+  const blob1 = useRef<HTMLDivElement>(null)
+  const blob2 = useRef<HTMLDivElement>(null)
+
+  // Subtle parallax on blobs
+  useEffect(() => {
+    const onMove = (e: MouseEvent) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 18
+      const y = (e.clientY / window.innerHeight - 0.5) * 18
+      if (blob1.current) blob1.current.style.transform = `translate(${x}px, ${y}px) scale(1)`
+      if (blob2.current) blob2.current.style.transform = `translate(${-x * 0.7}px, ${-y * 0.7}px) scale(1)`
+    }
+    window.addEventListener('mousemove', onMove, { passive: true })
+    return () => window.removeEventListener('mousemove', onMove)
+  }, [])
+
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
+      id="hero"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background"
       aria-label="Hero"
     >
-      {/* ── Background: Animated Grid + Glow ── */}
+      {/* Animated warm blobs */}
       <div
-        className="absolute inset-0 bg-grid-pattern bg-grid animate-grid-shift opacity-100"
-        aria-hidden="true"
-        style={{ backgroundSize: '48px 48px' }}
-      />
-      <div
-        className="absolute inset-0 bg-hero-glow"
+        ref={blob1}
+        className="absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full opacity-25 blur-3xl animate-blob-shift"
+        style={{ background: 'radial-gradient(circle, #A7F3D0 0%, #6EE7B7 40%, transparent 70%)', transition: 'transform 0.4s ease' }}
         aria-hidden="true"
       />
-      {/* Radial vignette to fade edges */}
       <div
-        className="absolute inset-0"
+        ref={blob2}
+        className="absolute -bottom-32 -right-24 w-[500px] h-[500px] rounded-full opacity-20 blur-3xl animate-blob-shift"
+        style={{ background: 'radial-gradient(circle, #FDE68A 0%, #FCD34D 40%, transparent 70%)', animationDelay: '3s', transition: 'transform 0.4s ease' }}
+        aria-hidden="true"
+      />
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full opacity-10 blur-3xl animate-blob-shift"
+        style={{ background: 'radial-gradient(ellipse, #99F6E4 0%, #5EEAD4 50%, transparent 70%)', animationDelay: '5s' }}
+        aria-hidden="true"
+      />
+
+      {/* Subtle dot grid */}
+      <div
+        className="absolute inset-0 opacity-[0.035]"
         style={{
-          background:
-            'radial-gradient(ellipse 120% 80% at 50% 50%, transparent 40%, #050510 100%)',
+          backgroundImage: 'radial-gradient(circle, #1C1714 1px, transparent 1px)',
+          backgroundSize: '28px 28px',
         }}
         aria-hidden="true"
       />
 
-      {/* ── Content ── */}
+      {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Eyebrow */}
-        <div
-          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/30 bg-primary/5 mb-8 animate-fade-in"
-          style={{ animationDelay: '0ms' }}
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse-slow" aria-hidden="true" />
-          <span className="text-primary text-xs font-heading font-semibold tracking-widest uppercase">
-            Now in Early Access — Kawan
+
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-8 border border-border bg-white/80 backdrop-blur-sm shadow-soft animate-fade-in">
+          <span
+            className="w-2 h-2 rounded-full animate-float"
+            style={{ background: 'var(--color-primary)' }}
+          />
+          <span className="font-heading text-xs font-semibold text-text-secondary uppercase tracking-widest">
+            Kawan — AI School Transport Safety
           </span>
         </div>
 
@@ -52,67 +71,74 @@ export default function HeroSection() {
         <h1
           className="font-heading font-bold text-text-primary mb-6 animate-fade-up"
           style={{
-            fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+            fontSize: 'clamp(2.5rem, 6vw, 5rem)',
             lineHeight: '1.1',
             letterSpacing: '-0.02em',
-            animationDelay: '100ms',
+            animationDelay: '0.1s',
           }}
         >
-          Amplifying Human Potential
-          <br />
-          <span className="gradient-text">Through Science and Technology.</span>
+          Every child home.{' '}
+          <span
+            className="relative inline-block"
+            style={{
+              background: 'linear-gradient(135deg, #0D7A6A 0%, #059669 50%, #F59E0B 100%)',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}
+          >
+            Safe. On time.
+          </span>
         </h1>
 
-        {/* Sub-headline */}
+        {/* Sub */}
         <p
-          className="text-text-secondary font-body text-lg sm:text-xl max-w-2xl mx-auto mb-10 animate-fade-up"
-          style={{ lineHeight: '1.7', animationDelay: '200ms' }}
+          className="font-body text-text-secondary mb-10 mx-auto max-w-2xl animate-fade-up"
+          style={{
+            fontSize: 'clamp(1.05rem, 2vw, 1.25rem)',
+            lineHeight: '1.75',
+            animationDelay: '0.22s',
+          }}
         >
-          Jabon Labs builds intelligent systems that make everyday life safer, smarter, and more
-          efficient — for everyone, not just the few. Starting with AI. Expanding to science itself.
+          Jabon Labs builds intelligent systems that amplify human potential. Kawan gives parents,
+          schools and drivers real-time AI-powered visibility into every school journey.
         </p>
 
-        {/* CTA Row */}
+        {/* CTAs */}
         <div
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up"
-          style={{ animationDelay: '300ms' }}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-up"
+          style={{ animationDelay: '0.34s' }}
         >
           <a
             href="#waitlist"
-            className="inline-flex items-center px-6 py-3 rounded-xl bg-primary text-background font-heading font-semibold text-base hover:bg-primary-dark transition-all duration-200 shadow-glow-cyan cursor-pointer min-w-[180px] justify-center"
+            className="px-7 py-3.5 rounded-xl font-heading font-semibold text-sm text-white transition-all duration-200 hover:shadow-glow-teal hover:-translate-y-0.5"
+            style={{ background: 'var(--color-primary)' }}
           >
-            Get Early Access
+            Request Early Access
           </a>
           <a
             href="#products"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border text-text-secondary hover:text-text-primary hover:border-primary/40 transition-all duration-200 font-heading font-medium text-base cursor-pointer"
+            className="px-7 py-3.5 rounded-xl font-heading font-semibold text-sm text-text-primary border border-border bg-white/70 backdrop-blur-sm hover:bg-white hover:border-primary/30 transition-all duration-200"
           >
-            Learn About Kawan
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            See How Kawan Works →
           </a>
         </div>
 
-        {/* Social proof seed */}
+        {/* Social proof */}
         <p
-          className="mt-10 text-text-muted text-sm animate-fade-in"
-          style={{ animationDelay: '500ms' }}
+          className="mt-8 text-text-muted font-body text-sm animate-fade-in"
+          style={{ animationDelay: '0.5s' }}
         >
-          <span className="text-primary">★★★★★</span>&nbsp; Trusted by parents &amp; school administrators
+          Trusted by schools and parents · No commitment required
         </p>
       </div>
 
-      {/* ── Scroll indicator ── */}
+      {/* Bottom fade */}
       <div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-text-muted animate-bounce"
+        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
+        style={{ background: 'linear-gradient(to bottom, transparent, var(--color-background))' }}
         aria-hidden="true"
-      >
-        <span className="text-xs uppercase tracking-widest font-heading">Scroll</span>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </div>
+      />
     </section>
   )
 }

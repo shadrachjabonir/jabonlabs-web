@@ -1,181 +1,100 @@
-// ─── ProductSection ────────────────────────────────────────────────────────
-// Kawan product spotlight — 3-column feature cards + how it works steps.
-//
-// TODO (AI integration point): Add a live demo panel below the feature grid
-// showing a simulated multi-agent coordination view — agents communicating
-// events in a network graph or event stream. Mount a <AgentDemoPanel> component here.
+// ─── ProductSection ───────────────────────────────────────────────────────────
+// Kawan product spotlight with warm clean cards.
 
 const features = [
   {
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <path d="M14 3L3 8v6c0 6.08 4.68 11.76 11 13 6.32-1.24 11-6.92 11-13V8L14 3z"
-          stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-        <path d="M9 14l3 3 7-7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-    title: 'Verified Handoffs',
-    body: 'Every escort confirmed via QR or biometric check-in. Every transfer logged with timestamp and location. No assumptions, no ambiguity.',
-    color: 'text-primary',
-    glow: 'rgba(0,200,255,0.12)',
+    icon: '📍',
+    title: 'Live Route Tracking',
+    body: 'GPS-accurate location of every school bus, updated in real time for parents and administrators.',
   },
   {
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <circle cx="14" cy="14" r="10" stroke="currentColor" strokeWidth="1.5" />
-        <circle cx="14" cy="14" r="4" stroke="currentColor" strokeWidth="1.5" />
-        <line x1="14" y1="4" x2="14" y2="7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        <line x1="14" y1="21" x2="14" y2="24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        <line x1="4" y1="14" x2="7" y2="14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        <line x1="21" y1="14" x2="24" y2="14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      </svg>
-    ),
-    title: 'Live Journey Tracking',
-    body: 'Real-time GPS status at every stage — pickup, en route, school arrival, return. Parents see exactly where their child is, always.',
-    color: 'text-secondary',
-    glow: 'rgba(123,97,255,0.12)',
+    icon: '🤖',
+    title: 'Multi-Agent AI',
+    body: 'Autonomous agents monitor routes, flag anomalies, and coordinate alerts across all stakeholders simultaneously.',
   },
   {
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <rect x="3" y="6" width="22" height="16" rx="3" stroke="currentColor" strokeWidth="1.5" />
-        <circle cx="9" cy="14" r="2" fill="currentColor" opacity="0.5" />
-        <circle cx="14" cy="14" r="2" fill="currentColor" />
-        <circle cx="19" cy="14" r="2" fill="currentColor" opacity="0.5" />
-        <path d="M14 6V3M8 6V3M20 6V3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      </svg>
-    ),
-    title: 'AI Anomaly Detection',
-    body: 'Kawan learns what "normal" looks like for each route. Any deviation — delay, wrong turn, missed handoff — triggers an immediate alert before a parent thinks to check.',
-    color: 'text-primary',
-    glow: 'rgba(0,200,255,0.12)',
+    icon: '🔔',
+    title: 'Instant Alerts',
+    body: 'Parents are notified the moment a deviation, delay or safety event is detected — no manual check needed.',
   },
 ]
 
 const steps = [
-  {
-    number: '01',
-    title: 'School registers routes and authorises escorts',
-    body: 'Administrators configure transport routes, assign authorised escorts, and set expected schedules — once, in minutes.',
-  },
-  {
-    number: '02',
-    title: 'Parent receives daily journey status',
-    body: 'Real-time push notifications at each journey milestone: pickup confirmed, en route, arrived safely. Silence means everything is on track.',
-  },
-  {
-    number: '03',
-    title: 'AI monitors every handoff and flags anomalies',
-    body: "Kawan's multi-agent system watches location, timing, and handoff confirmations simultaneously. It alerts the right person instantly when anything deviates.",
-  },
-  {
-    number: '04',
-    title: 'Administrators get full visibility and reporting',
-    body: 'Schools see daily journey summaries, incident logs, and trend analytics — everything needed to continuously improve transport safety.',
-  },
+  { num: '01', title: 'School sets up Kawan', body: 'Onboard buses, routes and student profiles in minutes.' },
+  { num: '02', title: 'AI agents activate', body: 'Agents begin monitoring every journey from first stop to last.' },
+  { num: '03', title: 'Parents get visibility', body: 'Live app view and proactive alerts — always in the loop.' },
+  { num: '04', title: 'Schools gain insights', body: 'Attendance, punctuality and safety data at a glance.' },
 ]
 
 export default function ProductSection() {
   return (
-    <section id="products" className="py-24 bg-surface" aria-label="Kawan product">
+    <section
+      id="products"
+      className="py-24"
+      style={{ background: 'var(--color-surface)' }}
+      aria-label="Kawan product"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* ── Section Header ── */}
+        {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-primary font-heading text-sm uppercase tracking-widest font-semibold mb-4">
-            Flagship Product
+          <p className="reveal font-heading text-sm uppercase tracking-widest font-semibold mb-3"
+             style={{ color: 'var(--color-primary)' }}>
+            Product — Kawan
           </p>
           <h2
-            className="font-heading font-bold text-text-primary mb-4"
-            style={{
-              fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
-              lineHeight: '1.2',
-              letterSpacing: '-0.01em',
-            }}
+            className="reveal reveal-delay-1 font-heading font-bold text-text-primary mb-4"
+            style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', lineHeight: '1.15', letterSpacing: '-0.015em' }}
           >
-            Meet Kawan — The AI Safety Layer for School Transport
+            Intelligence for every school journey
           </h2>
-          <p className="text-text-secondary font-body text-lg max-w-2xl mx-auto" style={{ lineHeight: '1.7' }}>
-            From pickup to drop-off, every step verified, every deviation flagged. Peace of mind as a product.
+          <p className="reveal reveal-delay-2 font-body text-text-secondary max-w-xl mx-auto text-base" style={{ lineHeight: '1.75' }}>
+            Kawan means <em>friend</em> in Malay. It is the AI companion that watches over every bus, every route, every child.
           </p>
         </div>
 
-        {/* ── Feature Cards ── */}
+        {/* Feature cards */}
         <div className="grid md:grid-cols-3 gap-6 mb-20">
-          {features.map((feature) => (
+          {features.map((f, i) => (
             <div
-              key={feature.title}
-              className="rounded-2xl p-6 glow-border bg-card hover:border-primary/40 transition-all duration-300 group cursor-default"
-              style={{
-                background: `linear-gradient(135deg, ${feature.glow} 0%, transparent 60%), var(--color-card)`,
-              }}
+              key={f.title}
+              className={`reveal reveal-delay-${i + 2} card-hover rounded-2xl bg-white border border-border p-7`}
+              style={{ boxShadow: '0 4px 24px rgba(13,122,106,0.07)' }}
             >
-              <div className={`${feature.color} mb-4 transition-transform duration-200 group-hover:scale-110`}>
-                {feature.icon}
+              <div
+                className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-5"
+                style={{ background: '#F0FDF9' }}
+                aria-hidden="true"
+              >
+                {f.icon}
               </div>
-              <h3 className="font-heading font-semibold text-text-primary text-lg mb-2">
-                {feature.title}
-              </h3>
-              <p className="text-text-secondary font-body text-sm" style={{ lineHeight: '1.7' }}>
-                {feature.body}
-              </p>
+              <h3 className="font-heading font-semibold text-text-primary text-base mb-2">{f.title}</h3>
+              <p className="font-body text-text-secondary text-sm leading-relaxed">{f.body}</p>
             </div>
           ))}
         </div>
 
-        {/* ── How It Works ── */}
-        <div>
-          <h3 className="font-heading font-bold text-text-primary text-center text-2xl mb-12">
-            How Kawan Works
+        {/* How It Works */}
+        <div
+          className="reveal rounded-2xl bg-white border border-border p-10"
+          style={{ boxShadow: '0 4px 32px rgba(13,122,106,0.07)' }}
+        >
+          <h3 className="font-heading font-bold text-text-primary text-xl text-center mb-10">
+            How It Works
           </h3>
-
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {steps.map((step, index) => (
-              <div key={step.number} className="relative">
-                {/* Connector line between steps (desktop only) */}
-                {index < steps.length - 1 && (
-                  <div
-                    className="hidden lg:block absolute top-5 left-full w-full h-px -translate-y-1/2 z-0"
-                    style={{
-                      background: 'linear-gradient(to right, rgba(0,200,255,0.3), transparent)',
-                      width: 'calc(100% - 32px)',
-                      left: 'calc(100% - 16px)',
-                    }}
-                    aria-hidden="true"
-                  />
-                )}
-
-                <div className="relative z-10 flex flex-col">
-                  {/* Step number */}
-                  <span
-                    className="font-heading font-bold text-primary/30 mb-3"
-                    style={{ fontSize: '2.5rem', lineHeight: 1 }}
-                    aria-hidden="true"
-                  >
-                    {step.number}
-                  </span>
-                  <h4 className="font-heading font-semibold text-text-primary text-sm mb-2">
-                    {step.title}
-                  </h4>
-                  <p className="text-text-secondary font-body text-xs" style={{ lineHeight: '1.65' }}>
-                    {step.body}
-                  </p>
+            {steps.map((s, i) => (
+              <div key={s.num} className={`reveal reveal-delay-${i + 1} flex flex-col gap-3`}>
+                <div
+                  className="w-10 h-10 rounded-xl font-heading font-bold text-sm flex items-center justify-center"
+                  style={{ background: 'linear-gradient(135deg, #D1FAE5, #A7F3D0)', color: 'var(--color-primary)' }}
+                >
+                  {s.num}
                 </div>
+                <h4 className="font-heading font-semibold text-text-primary text-sm">{s.title}</h4>
+                <p className="font-body text-text-muted text-xs leading-relaxed">{s.body}</p>
               </div>
             ))}
-          </div>
-
-          {/* CTA */}
-          <div className="text-center mt-14">
-            <a
-              href="#waitlist"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-background font-heading font-semibold text-sm hover:bg-primary-dark transition-all duration-200 shadow-glow-cyan cursor-pointer"
-            >
-              Request a Demo
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </a>
           </div>
         </div>
       </div>

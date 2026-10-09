@@ -1,40 +1,21 @@
-// ─── ProblemSection ───────────────────────────────────────────────────────
-// Establishes the pain point empathetically before introducing the solution.
-// Tone: concerned parent, not alarming statistics.
+// ─── ProblemSection ───────────────────────────────────────────────────────────
+// Pain points with a warm clean layout.
 
-const painPoints = [
+const problems = [
   {
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M12 7v5l3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      </svg>
-    ),
-    title: 'No real-time visibility',
-    body: 'Most parents receive no updates from pickup to school drop-off. A 45-minute journey becomes 45 minutes of uncertainty.',
+    icon: '👁',
+    title: 'No Real-Time Visibility',
+    body: 'Parents don\'t know if their child is on the bus, stuck in traffic, or already home.',
   },
   {
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        <circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      </svg>
-    ),
-    title: 'Unverified handoffs',
-    body: 'Who collected your child at the gate? Paper sign-out sheets and word-of-mouth cannot confirm who took responsibility at every transfer point.',
+    icon: '🔀',
+    title: 'Route Deviations Go Undetected',
+    body: 'When a bus takes the wrong route or makes an unscheduled stop, no one is automatically alerted.',
   },
   {
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        <line x1="12" y1="9" x2="12" y2="13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        <line x1="12" y1="17" x2="12.01" y2="17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      </svg>
-    ),
-    title: 'Delayed or absent alerts',
-    body: 'When something goes wrong — a delayed bus, a route change, a missed handoff — parents and administrators find out too late, if at all.',
+    icon: '📋',
+    title: 'Manual Attendance is Error-Prone',
+    body: 'Paper rolls and WhatsApp messages create information gaps that put children at risk.',
   },
 ]
 
@@ -42,119 +23,90 @@ export default function ProblemSection() {
   return (
     <section
       id="problem"
-      className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
+      className="py-24 bg-background"
       aria-label="The problem"
     >
-      <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        {/* ── Text Side ── */}
-        <div>
-          <p className="text-primary font-heading text-sm uppercase tracking-widest font-semibold mb-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div className="text-center mb-16">
+          <p className="reveal font-heading text-sm uppercase tracking-widest font-semibold mb-3"
+             style={{ color: 'var(--color-secondary)' }}>
             The Problem
           </p>
           <h2
-            className="font-heading font-bold text-text-primary mb-6"
-            style={{
-              fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
-              lineHeight: '1.2',
-              letterSpacing: '-0.01em',
-            }}
+            className="reveal reveal-delay-1 font-heading font-bold text-text-primary"
+            style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', lineHeight: '1.15', letterSpacing: '-0.015em' }}
           >
-            Every day, 300 million children travel to school.{' '}
-            <span className="text-text-secondary">
-              Most parents have no idea if they arrived safely.
-            </span>
+            School transport is the most important journey<br className="hidden md:block" /> with the least intelligence.
           </h2>
-          <p className="text-text-secondary font-body text-base mb-8" style={{ lineHeight: '1.75' }}>
-            School transport involves a chain of handoffs — from home to escort to bus to school gate
-            and back. Each link in that chain carries risk, and today, most of that chain is invisible
-            to the people who care most: parents and school administrators.
-          </p>
-
-          {/* Pain point list */}
-          <ul className="space-y-6" role="list">
-            {painPoints.map((point) => (
-              <li key={point.title} className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-card glow-border flex items-center justify-center text-text-secondary">
-                  {point.icon}
-                </div>
-                <div>
-                  <h3 className="font-heading font-semibold text-text-primary text-sm mb-1">
-                    {point.title}
-                  </h3>
-                  <p className="text-text-secondary font-body text-sm" style={{ lineHeight: '1.6' }}>
-                    {point.body}
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ul>
         </div>
 
-        {/* ── Visual Side — Route Diagram ── */}
-        {/*
-          TODO (AI integration point): Replace this static SVG with a live map
-          component (e.g. Mapbox GL or react-leaflet) showing a real-time
-          anonymised route with AI anomaly markers.
-        */}
-        <div className="relative flex items-center justify-center">
-          <div className="w-full max-w-md rounded-2xl glow-border bg-card p-8">
+        {/* Problem cards */}
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
+          {problems.map((p, i) => (
+            <div
+              key={p.title}
+              className={`reveal reveal-delay-${i + 2} card-hover rounded-2xl bg-white border border-border p-7`}
+              style={{ boxShadow: '0 2px 16px rgba(28,23,20,0.06)' }}
+            >
+              <div className="text-3xl mb-4" aria-hidden="true">{p.icon}</div>
+              <h3 className="font-heading font-semibold text-text-primary text-base mb-2">{p.title}</h3>
+              <p className="font-body text-text-secondary text-sm leading-relaxed">{p.body}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Route diagram */}
+        <div
+          className="reveal rounded-2xl border border-border bg-white p-8"
+          style={{ boxShadow: '0 4px 24px rgba(28,23,20,0.06)' }}
+        >
+          <p className="font-heading font-semibold text-text-secondary text-sm mb-6 text-center uppercase tracking-wider">
+            A typical school morning — zero AI intelligence
+          </p>
+          <div className="overflow-x-auto">
             <svg
-              viewBox="0 0 320 280"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-full"
-              aria-label="Route diagram showing home to school journey with checkpoints"
+              viewBox="0 0 700 120"
+              className="w-full max-w-2xl mx-auto"
+              aria-label="Route diagram showing lack of real-time tracking"
+              role="img"
             >
               {/* Route line */}
-              <path
-                d="M60 220 C60 220 80 120 160 100 C240 80 260 60 260 60"
-                stroke="#1E2D3D"
-                strokeWidth="2"
-                strokeDasharray="6 4"
-              />
-              <path
-                d="M60 220 C60 220 80 120 160 100 C240 80 260 60 260 60"
-                stroke="url(#routeGrad)"
-                strokeWidth="2"
-                opacity="0.6"
-              />
+              <line x1="60" y1="60" x2="640" y2="60" stroke="#E8E3DA" strokeWidth="2" strokeDasharray="6 4" />
 
-              {/* Home marker */}
-              <circle cx="60" cy="220" r="12" fill="#101823" stroke="#00C8FF" strokeWidth="1.5" />
-              <text x="60" y="225" textAnchor="middle" fontSize="10" fill="#00C8FF">⌂</text>
-              <text x="60" y="244" textAnchor="middle" fontSize="10" fill="#94A3B8">Home</text>
+              {/* Stops */}
+              {[
+                { x: 60,  label: 'School' },
+                { x: 200, label: 'Stop 1' },
+                { x: 350, label: 'Stop 2' },
+                { x: 500, label: '??' },
+                { x: 640, label: 'Home?' },
+              ].map(({ x, label }, i) => (
+                <g key={label}>
+                  <circle
+                    cx={x} cy={60} r={i === 3 ? 14 : 10}
+                    fill={i === 3 ? '#FEF3C7' : '#F0FDF9'}
+                    stroke={i === 3 ? '#F59E0B' : '#0D7A6A'}
+                    strokeWidth={i === 3 ? 2 : 1.5}
+                  />
+                  {i === 3 && (
+                    <text x={x} y={65} textAnchor="middle" fontSize="11" fontWeight="bold" fill="#D97706">?</text>
+                  )}
+                  <text x={x} y={92} textAnchor="middle" fontSize="10" fill="#9E9890" fontFamily="sans-serif">
+                    {label}
+                  </text>
+                </g>
+              ))}
 
-              {/* Checkpoint 1 */}
-              <circle cx="120" cy="170" r="8" fill="#101823" stroke="#7B61FF" strokeWidth="1.5" />
-              <circle cx="120" cy="170" r="3" fill="#7B61FF" />
-              <text x="138" y="174" fontSize="9" fill="#94A3B8">Pickup ✓</text>
+              {/* Bus icon */}
+              <text x="280" y="42" textAnchor="middle" fontSize="16" aria-hidden="true">🚌</text>
 
-              {/* Checkpoint 2 */}
-              <circle cx="190" cy="118" r="8" fill="#101823" stroke="#7B61FF" strokeWidth="1.5" />
-              <circle cx="190" cy="118" r="3" fill="#7B61FF" />
-              <text x="208" y="122" fontSize="9" fill="#94A3B8">En route ✓</text>
-
-              {/* School marker */}
-              <circle cx="260" cy="60" r="12" fill="#101823" stroke="#10B981" strokeWidth="1.5" />
-              <text x="260" y="65" textAnchor="middle" fontSize="9" fill="#10B981">✓</text>
-              <text x="260" y="84" textAnchor="middle" fontSize="10" fill="#94A3B8">School</text>
-
-              {/* AI anomaly marker — off route */}
-              <circle cx="230" cy="145" r="6" fill="#EF4444" opacity="0.8" />
-              <text x="246" y="149" fontSize="8" fill="#EF4444">Route deviation!</text>
-              <line x1="190" y1="118" x2="230" y2="145" stroke="#EF4444" strokeWidth="1" strokeDasharray="3 2" opacity="0.5" />
-
-              <defs>
-                <linearGradient id="routeGrad" x1="60" y1="220" x2="260" y2="60" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#7B61FF" />
-                  <stop offset="1" stopColor="#00C8FF" />
-                </linearGradient>
-              </defs>
+              {/* Alert marker */}
+              <text x="500" y="30" textAnchor="middle" fontSize="13" aria-hidden="true">⚠️</text>
+              <text x="500" y="18" textAnchor="middle" fontSize="8" fill="#D97706" fontFamily="sans-serif">
+                Untracked
+              </text>
             </svg>
-
-            <p className="text-center text-text-muted text-xs font-body mt-4">
-              AI detects route deviations and alerts guardians instantly
-            </p>
           </div>
         </div>
       </div>
