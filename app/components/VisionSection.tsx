@@ -1,19 +1,22 @@
 // ─── VisionSection ────────────────────────────────────────────────────────────
 // Warm, bright cinematic vision statement.
 
-const pillars = [
+import { IconShieldHeart, IconCircuit, IconGlobe } from './Icons'
+import type { ComponentType } from 'react'
+
+const pillars: { Icon: ComponentType<{ className?: string }>, title: string, body: string }[] = [
   {
-    icon: '◎',
+    Icon: IconShieldHeart,
     title: 'Safer Communities',
     body: 'Real-time intelligence that keeps every child accounted for — from gate to home.',
   },
   {
-    icon: '⬡',
+    Icon: IconCircuit,
     title: 'Smarter Systems',
     body: 'AI agents that coordinate across stakeholders, anticipating problems before they happen.',
   },
   {
-    icon: '△',
+    Icon: IconGlobe,
     title: 'Broader Impact',
     body: 'From school transport to healthcare logistics to infrastructure — intelligence wherever life matters most.',
   },
@@ -71,11 +74,10 @@ export default function VisionSection() {
               style={{ boxShadow: '0 4px 24px rgba(13,122,106,0.06)' }}
             >
               <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center text-xl mb-5"
+                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
                 style={{ background: 'linear-gradient(135deg, #D1FAE5, #A7F3D0)', color: 'var(--color-primary)' }}
-                aria-hidden="true"
               >
-                {p.icon}
+                <p.Icon className="w-6 h-6" />
               </div>
               <h3 className="font-heading font-semibold text-text-primary text-lg mb-2">{p.title}</h3>
               <p className="font-body text-text-secondary text-sm leading-relaxed">{p.body}</p>

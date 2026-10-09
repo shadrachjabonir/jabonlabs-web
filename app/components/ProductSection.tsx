@@ -1,19 +1,22 @@
 // ─── ProductSection ───────────────────────────────────────────────────────────
 // Kawan product spotlight with warm clean cards.
 
-const features = [
+import { IconMapPin, IconAI, IconBell } from './Icons'
+import type { ComponentType } from 'react'
+
+const features: { Icon: ComponentType<{ className?: string }>, title: string, body: string }[] = [
   {
-    icon: '📍',
+    Icon: IconMapPin,
     title: 'Live Route Tracking',
     body: 'GPS-accurate location of every school bus, updated in real time for parents and administrators.',
   },
   {
-    icon: '🤖',
+    Icon: IconAI,
     title: 'Multi-Agent AI',
     body: 'Autonomous agents monitor routes, flag anomalies, and coordinate alerts across all stakeholders simultaneously.',
   },
   {
-    icon: '🔔',
+    Icon: IconBell,
     title: 'Instant Alerts',
     body: 'Parents are notified the moment a deviation, delay or safety event is detected — no manual check needed.',
   },
@@ -62,11 +65,10 @@ export default function ProductSection() {
               style={{ boxShadow: '0 4px 24px rgba(13,122,106,0.07)' }}
             >
               <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-5"
-                style={{ background: '#F0FDF9' }}
-                aria-hidden="true"
+                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                style={{ background: '#F0FDF9', color: 'var(--color-primary)' }}
               >
-                {f.icon}
+                <f.Icon className="w-6 h-6" />
               </div>
               <h3 className="font-heading font-semibold text-text-primary text-base mb-2">{f.title}</h3>
               <p className="font-body text-text-secondary text-sm leading-relaxed">{f.body}</p>

@@ -1,19 +1,22 @@
 // ─── ProblemSection ───────────────────────────────────────────────────────────
 // Pain points with a warm clean layout.
 
-const problems = [
+import { IconEyeOff, IconRouteDeviation, IconClipboardError } from './Icons'
+import type { ComponentType } from 'react'
+
+const problems: { Icon: ComponentType<{ className?: string }>, title: string, body: string }[] = [
   {
-    icon: '👁',
+    Icon: IconEyeOff,
     title: 'No Real-Time Visibility',
     body: 'Parents don\'t know if their child is on the bus, stuck in traffic, or already home.',
   },
   {
-    icon: '🔀',
+    Icon: IconRouteDeviation,
     title: 'Route Deviations Go Undetected',
     body: 'When a bus takes the wrong route or makes an unscheduled stop, no one is automatically alerted.',
   },
   {
-    icon: '📋',
+    Icon: IconClipboardError,
     title: 'Manual Attendance is Error-Prone',
     body: 'Paper rolls and WhatsApp messages create information gaps that put children at risk.',
   },
@@ -49,7 +52,10 @@ export default function ProblemSection() {
               className={`reveal reveal-delay-${i + 2} card-hover rounded-2xl bg-white border border-border p-7`}
               style={{ boxShadow: '0 2px 16px rgba(28,23,20,0.06)' }}
             >
-              <div className="text-3xl mb-4" aria-hidden="true">{p.icon}</div>
+              <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
+                style={{ background: '#FFF7ED', color: 'var(--color-secondary)' }}>
+                <p.Icon className="w-5 h-5" />
+              </div>
               <h3 className="font-heading font-semibold text-text-primary text-base mb-2">{p.title}</h3>
               <p className="font-body text-text-secondary text-sm leading-relaxed">{p.body}</p>
             </div>
@@ -98,11 +104,21 @@ export default function ProblemSection() {
                 </g>
               ))}
 
-              {/* Bus icon */}
-              <text x="280" y="42" textAnchor="middle" fontSize="16" aria-hidden="true">🚌</text>
+              {/* Bus icon — small SVG rect bus */}
+              <g transform="translate(268,28)" aria-hidden="true">
+                <rect x="0" y="0" width="24" height="14" rx="3" fill="#D1FAE5" stroke="#0D7A6A" strokeWidth="1.2" />
+                <rect x="2" y="3" width="8" height="5" rx="1" fill="#0D7A6A" fillOpacity="0.3" />
+                <rect x="13" y="3" width="8" height="5" rx="1" fill="#0D7A6A" fillOpacity="0.3" />
+                <circle cx="5"  cy="14" r="2.5" fill="#0D7A6A" />
+                <circle cx="19" cy="14" r="2.5" fill="#0D7A6A" />
+              </g>
 
-              {/* Alert marker */}
-              <text x="500" y="30" textAnchor="middle" fontSize="13" aria-hidden="true">⚠️</text>
+              {/* Alert marker — triangle warning */}
+              <g transform="translate(488,14)" aria-hidden="true">
+                <polygon points="12,2 22,20 2,20" fill="#FEF3C7" stroke="#F59E0B" strokeWidth="1.5" strokeLinejoin="round" />
+                <line x1="12" y1="8" x2="12" y2="14" stroke="#D97706" strokeWidth="1.5" />
+                <circle cx="12" cy="17" r="1" fill="#D97706" />
+              </g>
               <text x="500" y="18" textAnchor="middle" fontSize="8" fill="#D97706" fontFamily="sans-serif">
                 Untracked
               </text>

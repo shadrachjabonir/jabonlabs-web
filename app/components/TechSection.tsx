@@ -1,27 +1,30 @@
 // ─── TechSection ──────────────────────────────────────────────────────────────
 // Infrastructure credibility — clean warm cards.
 
-const pillars = [
+import { IconAI, IconKubernetes, IconDDD, IconShieldLock } from './Icons'
+import type { ComponentType } from 'react'
+
+const pillars: { Icon: ComponentType<{ className?: string }>, title: string, body: string, tags: string[] }[] = [
   {
-    icon: '🧠',
+    Icon: IconAI,
     title: 'Multi-Agent AI',
     body: 'Autonomous agents coordinate in real time — monitoring, alerting, and adapting without human intervention.',
     tags: ['LLM Orchestration', 'Event Streaming', 'Autonomous Agents'],
   },
   {
-    icon: '☸️',
+    Icon: IconKubernetes,
     title: 'Kubernetes-Native',
     body: 'Cloud-native architecture built to scale across cities, districts, and countries without re-engineering.',
     tags: ['K8s', 'Auto-scaling', 'Zero Downtime'],
   },
   {
-    icon: '🏗️',
+    Icon: IconDDD,
     title: 'Domain-Driven Design',
     body: 'Built on DDD principles — clean bounded contexts, reliable domain events, and predictable behaviour under load.',
     tags: ['DDD', 'Event Sourcing', 'CQRS'],
   },
   {
-    icon: '🔒',
+    Icon: IconShieldLock,
     title: 'Enterprise Reliability',
     body: 'Bank-grade security, 99.9% SLA, and end-to-end encryption on every data point.',
     tags: ['TLS 1.3', 'SOC2-ready', 'GDPR'],
@@ -59,11 +62,10 @@ export default function TechSection() {
             >
               <div className="flex items-start gap-5">
                 <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0"
-                  style={{ background: '#FDFCFB', border: '1px solid #E8E3DA' }}
-                  aria-hidden="true"
+                  className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+                  style={{ background: '#F0FDF9', border: '1px solid #D1FAE5', color: 'var(--color-primary)' }}
                 >
-                  {p.icon}
+                  <p.Icon className="w-6 h-6" />
                 </div>
                 <div>
                   <h3 className="font-heading font-semibold text-text-primary text-base mb-1.5">{p.title}</h3>

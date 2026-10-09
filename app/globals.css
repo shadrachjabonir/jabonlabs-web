@@ -76,6 +76,11 @@ body {
 .reveal-delay-4 { transition-delay: 0.40s; }
 .reveal-delay-5 { transition-delay: 0.50s; }
 
+/* ── SVG icon animations ────────────────────────────────────────────────────── */
+@keyframes dashMove {
+  to { stroke-dashoffset: -24; }
+}
+
 /* ── Reduced motion ─────────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

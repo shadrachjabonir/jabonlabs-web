@@ -1,11 +1,14 @@
 // ─── KawanIntro ───────────────────────────────────────────────────────────────
 // Brief intro strip replacing the placeholder logo bar.
 
-const points = [
-  { icon: '📍', label: 'Live trip tracking' },
-  { icon: '🤖', label: 'AI anomaly alerts' },
-  { icon: '🔔', label: 'Instant parent notifications' },
-  { icon: '✅', label: 'Verified safe escorts' },
+import { IconMapPin, IconAI, IconBell, IconVerified } from './Icons'
+import type { ComponentType } from 'react'
+
+const points: { Icon: ComponentType<{ className?: string }>, label: string }[] = [
+  { Icon: IconMapPin,  label: 'Live trip tracking' },
+  { Icon: IconAI,      label: 'AI anomaly alerts' },
+  { Icon: IconBell,    label: 'Instant parent notifications' },
+  { Icon: IconVerified, label: 'Verified safe escorts' },
 ]
 
 export default function TrustBar() {
@@ -35,10 +38,10 @@ export default function TrustBar() {
               <div
                 key={p.label}
                 className="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-border text-sm font-body text-text-secondary"
-                style={{ boxShadow: '0 1px 6px rgba(28,23,20,0.06)' }}
+                style={{ boxShadow: '0 1px 6px rgba(28,23,20,0.06)', color: 'var(--color-primary)' }}
               >
-                <span aria-hidden="true">{p.icon}</span>
-                {p.label}
+                <p.Icon className="w-4 h-4 shrink-0" />
+                <span style={{ color: 'var(--color-text-secondary)' }}>{p.label}</span>
               </div>
             ))}
           </div>
