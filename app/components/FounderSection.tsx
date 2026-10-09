@@ -1,6 +1,8 @@
 // ─── FounderSection ──────────────────────────────────────────────────────────
 // Founder's Note — humanises the brand without sounding like a CV.
-// Two-column: photo placeholder + pull quote / short bio.
+// Two-column: photo + pull quote / short bio.
+
+import Image from 'next/image'
 
 export default function FounderSection() {
   return (
@@ -15,21 +17,15 @@ export default function FounderSection() {
 
           {/* ── Left: Photo + attribution ── */}
           <div className="flex flex-col items-center lg:items-start">
-            {/* Photo placeholder — replace with <Image> when portrait is available */}
-            <div
-              className="w-40 h-40 rounded-2xl glow-border bg-card flex items-center justify-center mb-6 relative overflow-hidden"
-              aria-label="Founder portrait — placeholder"
-            >
-              {/* Gradient placeholder */}
-              <div
-                className="absolute inset-0"
-                style={{ background: 'linear-gradient(135deg, rgba(0,200,255,0.1) 0%, rgba(123,97,255,0.1) 100%)' }}
-                aria-hidden="true"
+            <div className="w-56 h-64 rounded-2xl glow-border overflow-hidden mb-6 relative">
+              <Image
+                src="/founder.jpg"
+                alt="Shadrach, founder of Jabon Labs"
+                fill
+                style={{ objectFit: 'cover', objectPosition: 'center 15%' }}
+                sizes="(max-width: 768px) 224px, 224px"
+                priority
               />
-              <svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true">
-                <circle cx="28" cy="22" r="12" stroke="#94A3B8" strokeWidth="1.5" />
-                <path d="M8 50c0-11 9-18 20-18s20 7 20 18" stroke="#94A3B8" strokeWidth="1.5" strokeLinecap="round" />
-              </svg>
             </div>
 
             <div>
