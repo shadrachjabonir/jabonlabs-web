@@ -1,14 +1,15 @@
 // ─── KawanIntro ───────────────────────────────────────────────────────────────
 // Brief intro strip replacing the placeholder logo bar.
 
-import { IconMapPin, IconAI, IconBell, IconVerified } from './Icons'
+import { IconMapPin, IconAI, IconBell, IconCamera, IconRelay } from './Icons'
 import type { ComponentType } from 'react'
 
 const points: { Icon: ComponentType<{ className?: string }>, label: string }[] = [
+  { Icon: IconCamera,  label: 'Live in-car camera' },
+  { Icon: IconRelay,   label: 'AI admin — parent ↔ driver' },
   { Icon: IconMapPin,  label: 'Live trip tracking' },
   { Icon: IconAI,      label: 'AI anomaly alerts' },
   { Icon: IconBell,    label: 'Instant parent notifications' },
-  { Icon: IconVerified, label: 'Verified safe escorts' },
 ]
 
 export default function TrustBar() {

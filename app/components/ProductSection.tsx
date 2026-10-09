@@ -1,10 +1,22 @@
 // ─── ProductSection ───────────────────────────────────────────────────────────
 // Kawan product spotlight with warm clean cards.
 
-import { IconMapPin, IconAI, IconBell } from './Icons'
+import { IconMapPin, IconAI, IconBell, IconCamera, IconRelay } from './Icons'
 import type { ComponentType } from 'react'
 
-const features: { Icon: ComponentType<{ className?: string }>, title: string, body: string }[] = [
+const features: { Icon: ComponentType<{ className?: string }>, title: string, body: string, highlight?: boolean }[] = [
+  {
+    Icon: IconCamera,
+    title: 'Live In-Car Camera',
+    body: 'Parents can watch a live cabin feed during every journey — see exactly what is happening inside the bus, in real time.',
+    highlight: true,
+  },
+  {
+    Icon: IconRelay,
+    title: 'AI Admin — Parent ↔ Driver',
+    body: 'Need to reach the driver? Kawan\'s AI admin mediates the conversation — no direct calls, no distractions, no miscommunication.',
+    highlight: true,
+  },
   {
     Icon: IconMapPin,
     title: 'Live Route Tracking',
@@ -25,7 +37,7 @@ const features: { Icon: ComponentType<{ className?: string }>, title: string, bo
 const steps = [
   { num: '01', title: 'School sets up Kawan', body: 'Onboard buses, routes and student profiles in minutes.' },
   { num: '02', title: 'AI agents activate', body: 'Agents begin monitoring every journey from first stop to last.' },
-  { num: '03', title: 'Parents get visibility', body: 'Live app view and proactive alerts — always in the loop.' },
+  { num: '03', title: 'Parents get live access', body: 'Watch the cabin cam and communicate through the AI admin — always connected, never intrusive.' },
   { num: '04', title: 'Schools gain insights', body: 'Attendance, punctuality and safety data at a glance.' },
 ]
 
@@ -56,9 +68,37 @@ export default function ProductSection() {
           </p>
         </div>
 
+        {/* Differentiator highlight cards */}
+        <div className="grid md:grid-cols-2 gap-6 mb-6">
+          {features.filter(f => f.highlight).map((f, i) => (
+            <div
+              key={f.title}
+              className={`reveal reveal-delay-${i + 2} card-hover rounded-2xl border p-8`}
+              style={{
+                background: 'linear-gradient(135deg, #F0FDF9, #ECFDF5)',
+                borderColor: '#A7F3D0',
+                boxShadow: '0 4px 24px rgba(13,122,106,0.10)',
+              }}
+            >
+              <div
+                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                style={{ background: 'linear-gradient(135deg, #0D7A6A, #059669)', color: 'white' }}
+              >
+                <f.Icon className="w-6 h-6" />
+              </div>
+              <div className="inline-flex items-center gap-1.5 mb-3 px-2.5 py-0.5 rounded-full text-xs font-heading font-semibold"
+                style={{ background: '#FEF3C7', color: '#D97706' }}>
+                ★ Only on Kawan
+              </div>
+              <h3 className="font-heading font-semibold text-text-primary text-base mb-2">{f.title}</h3>
+              <p className="font-body text-text-secondary text-sm leading-relaxed">{f.body}</p>
+            </div>
+          ))}
+        </div>
+
         {/* Feature cards */}
         <div className="grid md:grid-cols-3 gap-6 mb-20">
-          {features.map((f, i) => (
+          {features.filter(f => !f.highlight).map((f, i) => (
             <div
               key={f.title}
               className={`reveal reveal-delay-${i + 2} card-hover rounded-2xl bg-white border border-border p-7`}

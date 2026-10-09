@@ -9,27 +9,39 @@ const NODES = [
     title: 'Journey begins',
     sub: 'All students checked in via Kawan',
     warn: false,
+    cam: false,
   },
   {
-    pct: 27,
+    pct: 24,
     label: 'Stop 1',
     title: 'Aisha boards',
     sub: 'Parent notified instantly — confirmed on bus',
     warn: false,
+    cam: false,
   },
   {
-    pct: 50,
-    label: 'Stop 2',
-    title: 'ETA updated',
-    sub: '8 min to school · all students accounted for',
+    pct: 44,
+    label: 'Cabin cam',
+    title: 'Parent watches live',
+    sub: '📹 Live in-car feed open in parent app',
     warn: false,
+    cam: true,
   },
   {
-    pct: 73,
+    pct: 64,
+    label: 'AI relay',
+    title: 'Parent messages driver',
+    sub: 'AI admin relays "Please drop Aisha first" — driver notified',
+    warn: false,
+    cam: false,
+  },
+  {
+    pct: 80,
     label: 'Stop 3',
     title: 'Route deviation detected',
     sub: 'AI alert sent to school and parents in < 1 s',
     warn: true,
+    cam: false,
   },
   {
     pct: 96,
@@ -37,6 +49,7 @@ const NODES = [
     title: 'Every child home safe',
     sub: 'Zero incidents · daily report generated ✓',
     warn: false,
+    cam: false,
   },
 ]
 
@@ -96,6 +109,7 @@ export default function RouteAnimation() {
   }, [])
 
   const node = NODES[step]
+  const isCamStep = node.cam
 
   return (
     <div
@@ -123,7 +137,7 @@ export default function RouteAnimation() {
           {node.warn && <WarnIcon />}
           <p
             className="font-heading font-semibold text-sm"
-            style={{ color: node.warn ? '#D97706' : '#0D7A6A' }}
+            style={{ color: node.warn ? '#D97706' : isCamStep ? '#2563EB' : '#0D7A6A' }}
           >
             {node.title}
           </p>
@@ -140,7 +154,7 @@ export default function RouteAnimation() {
         <div
           className="absolute"
           style={{
-            top: 38, left: `${NODES[0].pct}%`, right: `${100 - NODES[4].pct}%`,
+            top: 38, left: `${NODES[0].pct}%`, right: `${100 - NODES[NODES.length - 1].pct}%`,
             height: 2, background: '#E8E3DA',
           }}
         />
@@ -164,6 +178,7 @@ export default function RouteAnimation() {
           const active  = i === step
           const visited = i < step
           const iswarn  = active && n.warn
+          const iscam   = active && n.cam
           return (
             <div
               key={n.label}
@@ -178,17 +193,20 @@ export default function RouteAnimation() {
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   background: iswarn
                     ? 'linear-gradient(135deg,#FEF3C7,#FDE68A)'
-                    : (visited || active)
-                      ? 'linear-gradient(135deg,#D1FAE5,#A7F3D0)'
-                      : 'white',
-                  border: `${active ? 2 : 1.5}px solid ${iswarn ? '#F59E0B' : (visited || active) ? '#0D7A6A' : '#E8E3DA'}`,
+                    : iscam
+                      ? 'linear-gradient(135deg,#DBEAFE,#BFDBFE)'
+                      : (visited || active)
+                        ? 'linear-gradient(135deg,#D1FAE5,#A7F3D0)'
+                        : 'white',
+                  border: `${active ? 2 : 1.5}px solid ${iswarn ? '#F59E0B' : iscam ? '#3B82F6' : (visited || active) ? '#0D7A6A' : '#E8E3DA'}`,
                   transition: 'all 0.4s ease',
                   position: 'relative', zIndex: 2,
-                  boxShadow: active ? '0 0 0 4px rgba(13,122,106,0.12)' : 'none',
+                  boxShadow: active ? `0 0 0 4px ${iscam ? 'rgba(59,130,246,0.15)' : 'rgba(13,122,106,0.12)'}` : 'none',
                 }}
               >
                 {(visited || (active && !n.warn)) && <CheckIcon />}
                 {iswarn && <span style={{ fontSize: 10, fontWeight: 800, color: '#D97706', lineHeight: 1 }}>!</span>}
+                {iscam && !visited && <span style={{ fontSize: 9, fontWeight: 800, color: '#2563EB', lineHeight: 1 }}>▶</span>}
               </div>
               <p
                 className="font-body text-center mt-1.5"

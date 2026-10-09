@@ -145,6 +145,29 @@ export function IconGlobe({ className = '', style }: IconProps) {
   )
 }
 
+// Video camera — live cabin cam
+export function IconCamera({ className = '', style }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+      className={className} style={style} aria-hidden="true">
+      <rect x="2" y="7" width="15" height="12" rx="2" stroke="currentColor" />
+      <path d="M17 11l5-3v8l-5-3V11z" stroke="currentColor" />
+      <circle cx="9" cy="13" r="2.5" stroke="currentColor" />
+    </svg>
+  )
+}
+
+// Speech bubble with relay arrow — AI admin mediation
+export function IconRelay({ className = '', style }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+      className={className} style={style} aria-hidden="true">
+      <path d="M4 4h7a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H8l-3 2v-2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" stroke="currentColor" />
+      <path d="M13 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v2l-3-2h-2a2 2 0 0 1-2-2v-1" stroke="currentColor" />
+    </svg>
+  )
+}
+
 // Star/verified badge
 export function IconVerified({ className = '', style }: IconProps) {
   return (
