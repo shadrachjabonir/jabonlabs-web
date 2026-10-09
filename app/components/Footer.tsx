@@ -16,7 +16,7 @@ const footerLinks = {
     { label: 'Blog', href: '#' },
   ],
   Contact: [
-    { label: 'hello@jabonlabs.com', href: 'mailto:hello@jabonlabs.com' },
+    { label: 'shadrach@jabonlabs.com', href: 'mailto:shadrach@jabonlabs.com' },
     { label: 'LinkedIn', href: '#' },
     { label: 'GitHub', href: 'https://github.com/shadrachjabonir' },
     { label: 'Twitter / X', href: '#' },
