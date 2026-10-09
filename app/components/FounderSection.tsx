@@ -68,7 +68,7 @@ export default function FounderSection() {
                 className="font-heading font-semibold text-text-primary mb-3"
                 style={{ fontSize: 'clamp(1.2rem, 2vw, 1.6rem)', lineHeight: '1.35', letterSpacing: '-0.01em' }}
               >
-                &ldquo;The most important systems in our lives are often the least intelligent ones. We&rsquo;re here to change that.&rdquo;
+                &ldquo;The only constant is change.&rdquo;
               </p>
               <footer className="text-text-muted font-body text-sm">— Shadrach Jabonir</footer>
             </blockquote>
