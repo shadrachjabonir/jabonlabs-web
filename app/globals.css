@@ -76,9 +76,14 @@ body {
 .reveal-delay-4 { transition-delay: 0.40s; }
 .reveal-delay-5 { transition-delay: 0.50s; }
 
-/* ── SVG icon animations ────────────────────────────────────────────────────── */
+/* ── Component animations ───────────────────────────────────────────────────── */
 @keyframes dashMove {
   to { stroke-dashoffset: -24; }
+}
+
+@keyframes captionIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0);   }
 }
 
 /* ── Reduced motion ─────────────────────────────────────────────────────────── */
