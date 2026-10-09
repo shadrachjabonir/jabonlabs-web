@@ -63,7 +63,7 @@ export default function HeroSection() {
             style={{ background: 'var(--color-primary)' }}
           />
           <span className="font-heading text-xs font-semibold text-text-secondary uppercase tracking-widest">
-            Kawan — AI School Transport Safety
+            Kawan - Kawal Anak
           </span>
         </div>
 

@@ -22,7 +22,7 @@ export default function TrustBar() {
           <div className="shrink-0 text-center md:text-left">
             <p className="font-heading font-bold text-text-primary text-base">What is Kawan?</p>
             <p className="font-body text-text-secondary text-sm mt-0.5">
-              AI-powered school transport safety
+              Kawal Anak
             </p>
           </div>
 
