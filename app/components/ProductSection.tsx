@@ -62,8 +62,8 @@ export default function ProductSection() {
       style={{ background: 'var(--color-background)' }}
       aria-label="Kawan product"
     >
-      {/* Header */}
-      <div className="text-center mb-12">
+      {/* Header — fixed min-height so both columns start cards at the same point */}
+      <div className="text-center mb-12 flex flex-col items-center justify-start" style={{ minHeight: 200 }}>
         <p className="reveal font-heading text-sm uppercase tracking-widest font-semibold mb-3"
            style={{ color: K.accent }}>
           Product — Kawan
@@ -75,7 +75,7 @@ export default function ProductSection() {
           Intelligence for every school journey
         </h2>
         <p className="reveal reveal-delay-2 font-body text-text-secondary text-sm mx-auto" style={{ lineHeight: '1.75', maxWidth: 380 }}>
-          Kawan means <em>friend</em> in Malay. It is the AI companion that watches over every bus, every route, every child.
+          Kawan means <em>friend</em> in Malay — the AI companion that watches over every bus, every route, every child.
         </p>
       </div>
 

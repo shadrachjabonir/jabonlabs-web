@@ -47,11 +47,12 @@ export default function SapaSection() {
     <section
       id="sapa"
       className="py-16 px-6 lg:px-10"
-      style={{ background: 'var(--color-surface)' }}
+      style={{ background: 'var(--color-background)' }}
       aria-label="SAPA product"
     >
       {/* Header */}
-      <div className="text-center mb-12">
+      {/* Header — fixed min-height matches Kawan column */}
+      <div className="text-center mb-12 flex flex-col items-center justify-start" style={{ minHeight: 200 }}>
         <p className="reveal font-heading text-sm uppercase tracking-widest font-semibold mb-3"
            style={{ color: '#2563EB' }}>
           Product — SAPA
@@ -63,12 +64,12 @@ export default function SapaSection() {
           Sell live. Everywhere. Automatically.
         </h2>
         <p className="reveal reveal-delay-2 font-body text-text-secondary text-sm mx-auto" style={{ lineHeight: '1.75', maxWidth: 380 }}>
-          SAPA means <em>greet</em> in Malay and Indonesian. It is the AI that greets every buyer, finds the best price, and closes the sale — while you focus on the show.
+          SAPA means <em>greet</em> in Malay and Indonesian — the AI that greets every buyer, finds the best price, and closes the sale.
         </p>
       </div>
 
       {/* Highlight cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4" style={{ alignItems: 'stretch' }}>
         {features.filter(f => f.highlight).map((f, i) => (
           <div
             key={f.title}
