@@ -23,21 +23,10 @@ export default function TrustBar() {
     <div
       className="py-10 border-y border-border"
       style={{ background: 'var(--color-surface)' }}
-      aria-label="What is Kawan"
+      aria-label="Product features"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10">
-
-          {/* Label */}
-          <div className="shrink-0 text-center md:text-left">
-            <p className="font-heading font-bold text-text-primary text-base">Two products. One mission.</p>
-            <p className="font-body text-text-secondary text-sm mt-0.5">
-              Kawan · SAPA
-            </p>
-          </div>
-
-          {/* Divider */}
-          <div className="hidden md:block w-px h-10 bg-border" aria-hidden="true" />
 
           {/* Kawan pills */}
           <div className="flex flex-col gap-2">
