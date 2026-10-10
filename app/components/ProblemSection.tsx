@@ -136,8 +136,9 @@ export default function ProblemSection() {
           <div className="px-6 lg:px-10 py-10">
             <div className="reveal rounded-2xl border border-border p-8 text-center"
               style={{ background: S.bgTile, boxShadow: S.shadow }}>
-              <p className="font-heading font-bold text-3xl mb-3" style={{ color: S.accent }}>3×</p>
-              <p className="font-heading font-semibold text-text-primary text-base mb-2">more platforms, same seller</p>
+              <p className="font-heading font-semibold text-text-primary text-base mb-3" style={{ color: S.accent }}>
+                One seller. Three platforms. Zero missed orders.
+              </p>
               <p className="font-body text-text-secondary text-sm leading-relaxed">
                 SAPA lets one person broadcast to Instagram, Facebook and TikTok simultaneously — while the AI handles every order, every price check, every payment.
               </p>
