@@ -124,7 +124,13 @@ export default function ProductColumns() {
     <div className="border-y border-border" style={{ background: 'var(--color-background)' }}>
       <div className="md:grid md:grid-cols-2">
 
-        {/* ══ Row 1: Headers ══════════════════════════════════════════════ */}
+        {/* ══ ALL KAWAN SECTIONS FIRST (rows 1-6, col 1) ══════════════════
+            DOM order determines mobile stack. By placing all Kawan divs
+            before all SAPA divs, mobile shows all Kawan content then SAPA.
+            On md+ the explicit row/col placement aligns them side-by-side.
+        ════════════════════════════════════════════════════════════════ */}
+
+        {/* Kawan row 1: Header */}
         <div id="kawan"
           className="md:col-start-1 md:row-start-1 px-6 lg:px-10 py-12 border-b border-border md:border-r text-center flex flex-col items-center">
           <p className="reveal font-heading text-sm uppercase tracking-widest font-semibold mb-3" style={{ color: K.accent }}>
@@ -139,65 +145,31 @@ export default function ProductColumns() {
           </p>
         </div>
 
-        <div id="sapa"
-          className="md:col-start-2 md:row-start-1 px-6 lg:px-10 py-12 border-b border-border text-center flex flex-col items-center">
-          <p className="reveal font-heading text-sm uppercase tracking-widest font-semibold mb-3" style={{ color: S.accent }}>
-            Product — SAPA
-          </p>
-          <h2 className="reveal font-heading font-bold text-text-primary mb-4"
-            style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2.25rem)', lineHeight: '1.15', letterSpacing: '-0.015em' }}>
-            Sell live. Everywhere. Automatically.
-          </h2>
-          <p className="reveal font-body text-text-secondary text-sm" style={{ lineHeight: '1.75', maxWidth: 380 }}>
-            SAPA means <em>greet</em> in Malay and Indonesian — the AI that greets every buyer, finds the best price, and closes the sale.
-          </p>
-        </div>
-
-        {/* ══ Row 2: Highlight cards ══════════════════════════════════════ */}
+        {/* Kawan row 2: Highlight cards */}
         <div className="md:col-start-1 md:row-start-2 px-6 lg:px-10 py-8 border-b border-border md:border-r">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch">
             {kawanHi.map(f => <HighlightCard key={f.title} f={f} p={K} />)}
           </div>
         </div>
 
-        <div className="md:col-start-2 md:row-start-2 px-6 lg:px-10 py-8 border-b border-border">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch">
-            {sapaHi.map(f => <HighlightCard key={f.title} f={f} p={S} />)}
-          </div>
-        </div>
-
-        {/* ══ Row 3: Feature cards (first pair) ═══════════════════════════ */}
+        {/* Kawan row 3: Feature cards (first pair) */}
         <div className="md:col-start-1 md:row-start-3 px-6 lg:px-10 pt-8 pb-4 border-b border-border md:border-r">
           <div className="grid grid-cols-2 gap-4 items-stretch">
             {kawanReg.slice(0, 2).map(f => <FeatureCard key={f.title} f={f} p={K} />)}
           </div>
         </div>
 
-        <div className="md:col-start-2 md:row-start-3 px-6 lg:px-10 pt-8 pb-4 border-b border-border">
-          <div className="grid grid-cols-2 gap-4 items-stretch">
-            {sapaReg.slice(0, 2).map(f => <FeatureCard key={f.title} f={f} p={S} />)}
-          </div>
-        </div>
-
-        {/* ══ Row 4: Feature card (third, full column width) ══════════════ */}
+        {/* Kawan row 4: Feature card (third) */}
         <div className="md:col-start-1 md:row-start-4 px-6 lg:px-10 pt-4 pb-8 border-b border-border md:border-r">
           <FeatureCard f={kawanReg[2]} p={K} />
         </div>
 
-        <div className="md:col-start-2 md:row-start-4 px-6 lg:px-10 pt-4 pb-8 border-b border-border">
-          <FeatureCard f={sapaReg[2]} p={S} />
-        </div>
-
-        {/* ══ Row 5: Animations ════════════════════════════════════════════ */}
+        {/* Kawan row 5: Animation */}
         <div className="md:col-start-1 md:row-start-5 px-6 lg:px-10 py-8 border-b border-border md:border-r">
           <RouteAnimation variant="coral" />
         </div>
 
-        <div className="md:col-start-2 md:row-start-5 px-6 lg:px-10 py-8 border-b border-border">
-          <SapaAnimation />
-        </div>
-
-        {/* ══ Row 6: How It Works ══════════════════════════════════════════ */}
+        {/* Kawan row 6: How It Works */}
         <div className="md:col-start-1 md:row-start-6 px-6 lg:px-10 py-10 md:border-r border-border">
           <div className="reveal rounded-2xl bg-white border border-border p-8" style={{ boxShadow: K.shadow }}>
             <h3 className="font-heading font-bold text-text-primary text-lg text-center mb-8">How It Works</h3>
@@ -214,6 +186,48 @@ export default function ProductColumns() {
           </div>
         </div>
 
+        {/* ══ ALL SAPA SECTIONS AFTER (rows 1-6, col 2) ═══════════════════ */}
+
+        {/* SAPA row 1: Header */}
+        <div id="sapa"
+          className="md:col-start-2 md:row-start-1 px-6 lg:px-10 py-12 border-b border-border text-center flex flex-col items-center">
+          <p className="reveal font-heading text-sm uppercase tracking-widest font-semibold mb-3" style={{ color: S.accent }}>
+            Product — SAPA
+          </p>
+          <h2 className="reveal font-heading font-bold text-text-primary mb-4"
+            style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2.25rem)', lineHeight: '1.15', letterSpacing: '-0.015em' }}>
+            Sell live. Everywhere. Automatically.
+          </h2>
+          <p className="reveal font-body text-text-secondary text-sm" style={{ lineHeight: '1.75', maxWidth: 380 }}>
+            SAPA means <em>greet</em> in Malay and Indonesian — the AI that greets every buyer, finds the best price, and closes the sale.
+          </p>
+        </div>
+
+        {/* SAPA row 2: Highlight cards */}
+        <div className="md:col-start-2 md:row-start-2 px-6 lg:px-10 py-8 border-b border-border">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch">
+            {sapaHi.map(f => <HighlightCard key={f.title} f={f} p={S} />)}
+          </div>
+        </div>
+
+        {/* SAPA row 3: Feature cards (first pair) */}
+        <div className="md:col-start-2 md:row-start-3 px-6 lg:px-10 pt-8 pb-4 border-b border-border">
+          <div className="grid grid-cols-2 gap-4 items-stretch">
+            {sapaReg.slice(0, 2).map(f => <FeatureCard key={f.title} f={f} p={S} />)}
+          </div>
+        </div>
+
+        {/* SAPA row 4: Feature card (third) */}
+        <div className="md:col-start-2 md:row-start-4 px-6 lg:px-10 pt-4 pb-8 border-b border-border">
+          <FeatureCard f={sapaReg[2]} p={S} />
+        </div>
+
+        {/* SAPA row 5: Animation */}
+        <div className="md:col-start-2 md:row-start-5 px-6 lg:px-10 py-8 border-b border-border">
+          <SapaAnimation />
+        </div>
+
+        {/* SAPA row 6: How It Works */}
         <div className="md:col-start-2 md:row-start-6 px-6 lg:px-10 py-10">
           <div className="reveal rounded-2xl bg-white border border-border p-8" style={{ boxShadow: S.shadow }}>
             <h3 className="font-heading font-bold text-text-primary text-lg text-center mb-8">How It Works</h3>
