@@ -91,14 +91,14 @@ const NODES = [
 const DWELL  = 2800
 const TRAVEL = 1400
 
-function BusIcon() {
+function BusIcon({ accent, bg }: { accent: string, bg: string }) {
   return (
     <svg width="34" height="20" viewBox="0 0 34 20" fill="none" aria-hidden="true">
-      <rect x="1" y="1" width="32" height="15" rx="4" fill="#D1FAE5" stroke="#0D7A6A" strokeWidth="1.5" />
-      <rect x="3"  y="3.5" width="12" height="7" rx="1.5" fill="#0D7A6A" fillOpacity="0.28" />
-      <rect x="18" y="3.5" width="12" height="7" rx="1.5" fill="#0D7A6A" fillOpacity="0.28" />
-      <circle cx="9"  cy="19" r="3.5" fill="#0D7A6A" />
-      <circle cx="25" cy="19" r="3.5" fill="#0D7A6A" />
+      <rect x="1" y="1" width="32" height="15" rx="4" fill={bg} stroke={accent} strokeWidth="1.5" />
+      <rect x="3"  y="3.5" width="12" height="7" rx="1.5" fill={accent} fillOpacity="0.28" />
+      <rect x="18" y="3.5" width="12" height="7" rx="1.5" fill={accent} fillOpacity="0.28" />
+      <circle cx="9"  cy="19" r="3.5" fill={accent} />
+      <circle cx="25" cy="19" r="3.5" fill={accent} />
     </svg>
   )
 }
@@ -129,6 +129,8 @@ const PALETTE = {
     glow:       'rgba(13,122,106,0.12)',
     caption:    '#0D7A6A',
     check:      '#0D7A6A',
+    busBg:      '#D1FAE5',
+    busAccent:  '#0D7A6A',
   },
   coral: {
     line:       'linear-gradient(to right, #EA580C, #F97316)',
@@ -137,6 +139,8 @@ const PALETTE = {
     glow:       'rgba(234,88,12,0.12)',
     caption:    '#EA580C',
     check:      '#0D7A6A',
+    busBg:      '#FFEDD5',
+    busAccent:  '#EA580C',
   },
 }
 
@@ -292,7 +296,7 @@ export default function RouteAnimation({ variant = 'teal' }: { variant?: 'teal' 
             zIndex: 3,
           }}
         >
-          <BusIcon />
+          <BusIcon accent={p.busAccent} bg={p.busBg} />
         </div>
       </div>
 

@@ -24,8 +24,7 @@ import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
 import TrustBar from './components/TrustBar'
 import ProblemSection from './components/ProblemSection'
-import ProductSection from './components/ProductSection'
-import SapaSection from './components/SapaSection'
+import ProductColumns from './components/ProductColumns'
 import TechSection from './components/TechSection'
 import VisionSection from './components/VisionSection'
 import FounderSection from './components/FounderSection'
@@ -48,11 +47,8 @@ export default function HomePage() {
         {/* § 3 — Problem statement (school transport visibility gap) */}
         <ProblemSection />
 
-        {/* § 4 + § 5 — Kawan (left) and SAPA (right) side by side, stacked on mobile */}
-        <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border">
-          <ProductSection />
-          <SapaSection />
-        </div>
+        {/* § 4 + § 5 — Kawan (left) and SAPA (right), row-paired for equal height */}
+        <ProductColumns />
 
         {/* § 6 — Technical infrastructure credibility */}
         <TechSection />
