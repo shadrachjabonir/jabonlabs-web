@@ -166,12 +166,12 @@ export default function ProductColumns() {
       {/* Row 2 — Highlight cards */}
       <Row>
         <Cell className="py-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 h-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 h-full items-stretch">
             {kawanHi.map(f => <HighlightCard key={f.title} f={f} p={K} />)}
           </div>
         </Cell>
         <Cell className="py-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 h-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 h-full items-stretch">
             {sapaHi.map(f => <HighlightCard key={f.title} f={f} p={S} />)}
           </div>
         </Cell>
@@ -180,12 +180,12 @@ export default function ProductColumns() {
       {/* Row 3 — Feature cards */}
       <Row>
         <Cell className="py-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
             {kawanReg.map((f, i) => <FeatureCard key={f.title} f={f} p={K} span2={i === 2} />)}
           </div>
         </Cell>
         <Cell className="py-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
             {sapaReg.map((f, i) => <FeatureCard key={f.title} f={f} p={S} span2={i === 2} />)}
           </div>
         </Cell>
