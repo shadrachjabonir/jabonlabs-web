@@ -30,12 +30,12 @@ export default function TrustBar() {
 
           {/* Kawan pills */}
           <div className="flex flex-col gap-2">
-            <span className="font-heading text-xs font-semibold uppercase tracking-widest" style={{ color: '#0D7A6A' }}>Kawan</span>
+            <span className="font-heading text-xs font-semibold uppercase tracking-widest" style={{ color: '#EA580C' }}>Kawan</span>
             <div className="flex flex-wrap gap-2">
               {kawanPoints.map((p) => (
                 <div key={p.label}
                   className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border text-xs font-body"
-                  style={{ borderColor: '#A7F3D0', color: '#0D7A6A', boxShadow: '0 1px 6px rgba(13,122,106,0.07)' }}>
+                  style={{ borderColor: '#FED7AA', color: '#EA580C', boxShadow: '0 1px 6px rgba(234,88,12,0.07)' }}>
                   <p.Icon className="w-3.5 h-3.5 shrink-0" />
                   <span style={{ color: 'var(--color-text-secondary)' }}>{p.label}</span>
                 </div>

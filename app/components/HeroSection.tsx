@@ -108,8 +108,8 @@ export default function HeroSection() {
         <div className="flex flex-wrap gap-3 justify-center mb-10 animate-fade-up" style={{ animationDelay: '0.28s' }}>
           <a href="#kawan"
             className="flex items-center gap-2.5 px-5 py-2.5 rounded-xl border bg-white/80 backdrop-blur-sm font-heading font-semibold text-sm transition-all duration-200 hover:-translate-y-0.5"
-            style={{ borderColor: '#A7F3D0', color: '#0D7A6A', boxShadow: '0 2px 12px rgba(13,122,106,0.10)' }}>
-            <span className="w-2 h-2 rounded-full" style={{ background: '#0D7A6A' }} />
+            style={{ borderColor: '#FED7AA', color: '#EA580C', boxShadow: '0 2px 12px rgba(234,88,12,0.10)' }}>
+            <span className="w-2 h-2 rounded-full" style={{ background: '#EA580C' }} />
             Kawan — Kawal Anak
           </a>
           <a href="#sapa"

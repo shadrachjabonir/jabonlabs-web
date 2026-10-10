@@ -1,8 +1,21 @@
 // ─── ProductSection ───────────────────────────────────────────────────────────
-// Kawan product spotlight with warm clean cards.
+// Kawan product spotlight — orange accent (#EA580C), half-width column layout.
 
 import { IconMapPin, IconAI, IconBell, IconCamera, IconRelay } from './Icons'
+import RouteAnimation from './RouteAnimation'
 import type { ComponentType } from 'react'
+
+// Kawan palette
+const K = {
+  accent:     '#EA580C',
+  accentSoft: '#F97316',
+  bgHi:       'linear-gradient(135deg, #FFF7ED, #FFEDD5)',
+  borderHi:   '#FED7AA',
+  shadowHi:   '0 4px 24px rgba(234,88,12,0.10)',
+  bgTile:     'linear-gradient(135deg, #FFEDD5, #FED7AA)',
+  iconGrad:   'linear-gradient(135deg, #EA580C, #F97316)',
+  shadow:     '0 4px 24px rgba(234,88,12,0.07)',
+}
 
 const features: { Icon: ComponentType<{ className?: string }>, title: string, body: string, highlight?: boolean }[] = [
   {
@@ -37,7 +50,7 @@ const features: { Icon: ComponentType<{ className?: string }>, title: string, bo
 const steps = [
   { num: '01', title: 'School sets up Kawan', body: 'Onboard buses, routes and student profiles in minutes.' },
   { num: '02', title: 'AI agents activate', body: 'Agents begin monitoring every journey from first stop to last.' },
-  { num: '03', title: 'Parents get live access', body: 'Watch the cabin cam and communicate through the AI admin — always connected, never intrusive.' },
+  { num: '03', title: 'Parents get live access', body: 'Watch the cabin cam and communicate through the AI admin.' },
   { num: '04', title: 'Schools gain insights', body: 'Attendance, punctuality and safety data at a glance.' },
 ]
 
@@ -45,99 +58,97 @@ export default function ProductSection() {
   return (
     <section
       id="kawan"
-      className="py-24"
-      style={{ background: 'var(--color-surface)' }}
+      className="py-16 px-6 lg:px-10"
+      style={{ background: 'var(--color-background)' }}
       aria-label="Kawan product"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        {/* Header */}
-        <div className="text-center mb-16">
-          <p className="reveal font-heading text-sm uppercase tracking-widest font-semibold mb-3"
-             style={{ color: 'var(--color-primary)' }}>
-            Product — Kawan
-          </p>
-          <h2
-            className="reveal reveal-delay-1 font-heading font-bold text-text-primary mb-4"
-            style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', lineHeight: '1.15', letterSpacing: '-0.015em' }}
-          >
-            Intelligence for every school journey
-          </h2>
-          <p className="reveal reveal-delay-2 font-body text-text-secondary max-w-xl mx-auto text-base" style={{ lineHeight: '1.75' }}>
-            Kawan means <em>friend</em> in Malay. It is the AI companion that watches over every bus, every route, every child.
-          </p>
-        </div>
-
-        {/* Differentiator highlight cards */}
-        <div className="grid md:grid-cols-2 gap-6 mb-6">
-          {features.filter(f => f.highlight).map((f, i) => (
-            <div
-              key={f.title}
-              className={`reveal reveal-delay-${i + 2} card-hover rounded-2xl border p-8`}
-              style={{
-                background: 'linear-gradient(135deg, #F0FDF9, #ECFDF5)',
-                borderColor: '#A7F3D0',
-                boxShadow: '0 4px 24px rgba(13,122,106,0.10)',
-              }}
-            >
-              <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-                style={{ background: 'linear-gradient(135deg, #0D7A6A, #059669)', color: 'white' }}
-              >
-                <f.Icon className="w-6 h-6" />
-              </div>
-              <div className="inline-flex items-center gap-1.5 mb-3 px-2.5 py-0.5 rounded-full text-xs font-heading font-semibold"
-                style={{ background: '#FEF3C7', color: '#D97706' }}>
-                ★ Only on Kawan
-              </div>
-              <h3 className="font-heading font-semibold text-text-primary text-base mb-2">{f.title}</h3>
-              <p className="font-body text-text-secondary text-sm leading-relaxed">{f.body}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Feature cards */}
-        <div className="grid md:grid-cols-3 gap-6 mb-20">
-          {features.filter(f => !f.highlight).map((f, i) => (
-            <div
-              key={f.title}
-              className={`reveal reveal-delay-${i + 2} card-hover rounded-2xl bg-white border border-border p-7`}
-              style={{ boxShadow: '0 4px 24px rgba(13,122,106,0.07)' }}
-            >
-              <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-                style={{ background: 'linear-gradient(135deg, #D1FAE5, #A7F3D0)', color: 'var(--color-primary)' }}
-              >
-                <f.Icon className="w-6 h-6" />
-              </div>
-              <h3 className="font-heading font-semibold text-text-primary text-base mb-2">{f.title}</h3>
-              <p className="font-body text-text-secondary text-sm leading-relaxed">{f.body}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* How It Works */}
-        <div
-          className="reveal rounded-2xl bg-white border border-border p-10"
-          style={{ boxShadow: '0 4px 32px rgba(13,122,106,0.07)' }}
+      {/* Header */}
+      <div className="text-center mb-12">
+        <p className="reveal font-heading text-sm uppercase tracking-widest font-semibold mb-3"
+           style={{ color: K.accent }}>
+          Product — Kawan
+        </p>
+        <h2
+          className="reveal reveal-delay-1 font-heading font-bold text-text-primary mb-4"
+          style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2.25rem)', lineHeight: '1.15', letterSpacing: '-0.015em' }}
         >
-          <h3 className="font-heading font-bold text-text-primary text-xl text-center mb-10">
-            How It Works
-          </h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {steps.map((s, i) => (
-              <div key={s.num} className={`reveal reveal-delay-${i + 1} flex flex-col gap-3`}>
-                <div
-                  className="w-10 h-10 rounded-xl font-heading font-bold text-sm flex items-center justify-center"
-                  style={{ background: 'linear-gradient(135deg, #D1FAE5, #A7F3D0)', color: 'var(--color-primary)' }}
-                >
-                  {s.num}
-                </div>
-                <h4 className="font-heading font-semibold text-text-primary text-sm">{s.title}</h4>
-                <p className="font-body text-text-muted text-xs leading-relaxed">{s.body}</p>
-              </div>
-            ))}
+          Intelligence for every school journey
+        </h2>
+        <p className="reveal reveal-delay-2 font-body text-text-secondary text-sm mx-auto" style={{ lineHeight: '1.75', maxWidth: 380 }}>
+          Kawan means <em>friend</em> in Malay. It is the AI companion that watches over every bus, every route, every child.
+        </p>
+      </div>
+
+      {/* Differentiator highlight cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+        {features.filter(f => f.highlight).map((f, i) => (
+          <div
+            key={f.title}
+            className={`reveal reveal-delay-${i + 2} card-hover rounded-2xl border p-6`}
+            style={{ background: K.bgHi, borderColor: K.borderHi, boxShadow: K.shadowHi }}
+          >
+            <div
+              className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
+              style={{ background: K.iconGrad, color: 'white' }}
+            >
+              <f.Icon className="w-5 h-5" />
+            </div>
+            <div className="inline-flex items-center gap-1.5 mb-3 px-2.5 py-0.5 rounded-full text-xs font-heading font-semibold"
+              style={{ background: '#FEF3C7', color: '#D97706' }}>
+              ★ Only on Kawan
+            </div>
+            <h3 className="font-heading font-semibold text-text-primary text-sm mb-2">{f.title}</h3>
+            <p className="font-body text-text-secondary text-xs leading-relaxed">{f.body}</p>
           </div>
+        ))}
+      </div>
+
+      {/* Feature cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-14">
+        {features.filter(f => !f.highlight).map((f, i) => (
+          <div
+            key={f.title}
+            className={`reveal reveal-delay-${i + 2} card-hover rounded-2xl bg-white border border-border p-5 ${i === 2 ? 'sm:col-span-2' : ''}`}
+            style={{ boxShadow: K.shadow }}
+          >
+            <div
+              className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
+              style={{ background: K.bgTile, color: K.accent }}
+            >
+              <f.Icon className="w-5 h-5" />
+            </div>
+            <h3 className="font-heading font-semibold text-text-primary text-sm mb-2">{f.title}</h3>
+            <p className="font-body text-text-secondary text-xs leading-relaxed">{f.body}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Animated route */}
+      <div className="reveal mb-14">
+        <RouteAnimation />
+      </div>
+
+      {/* How It Works */}
+      <div
+        className="reveal rounded-2xl bg-white border border-border p-8"
+        style={{ boxShadow: K.shadow }}
+      >
+        <h3 className="font-heading font-bold text-text-primary text-lg text-center mb-8">
+          How It Works
+        </h3>
+        <div className="grid grid-cols-2 gap-5">
+          {steps.map((s, i) => (
+            <div key={s.num} className={`reveal reveal-delay-${i + 1} flex flex-col gap-2`}>
+              <div
+                className="w-9 h-9 rounded-xl font-heading font-bold text-xs flex items-center justify-center"
+                style={{ background: K.bgTile, color: K.accent }}
+              >
+                {s.num}
+              </div>
+              <h4 className="font-heading font-semibold text-text-primary text-xs">{s.title}</h4>
+              <p className="font-body text-text-muted text-xs leading-relaxed">{s.body}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

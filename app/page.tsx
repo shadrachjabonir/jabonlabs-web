@@ -48,11 +48,11 @@ export default function HomePage() {
         {/* § 3 — Problem statement (school transport visibility gap) */}
         <ProblemSection />
 
-        {/* § 4 — Kawan product spotlight */}
-        <ProductSection />
-
-        {/* § 5 — SAPA product spotlight */}
-        <SapaSection />
+        {/* § 4 + § 5 — Kawan (left) and SAPA (right) side by side, stacked on mobile */}
+        <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border">
+          <ProductSection />
+          <SapaSection />
+        </div>
 
         {/* § 6 — Technical infrastructure credibility */}
         <TechSection />

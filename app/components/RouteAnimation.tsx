@@ -144,7 +144,6 @@ export default function RouteAnimation() {
   }, [])
 
   const node = NODES[step]
-  const isCamStep = node.cam
 
   return (
     <div
@@ -172,14 +171,14 @@ export default function RouteAnimation() {
           {node.warn && <WarnIcon />}
           <p
             className="font-heading font-semibold text-sm"
-            style={{ color: node.warn ? '#D97706' : isCamStep ? '#2563EB' : '#0D7A6A' }}
+            style={{ color: node.warn ? '#D97706' : '#EA580C' }}
           >
             {node.title}
           </p>
         </div>
         <div
           className="flex items-center justify-center gap-1.5 mt-1"
-          style={{ color: node.warn ? '#D97706' : isCamStep ? '#2563EB' : '#0D7A6A' }}
+          style={{ color: node.warn ? '#D97706' : '#EA580C' }}
         >
           <SubIcon kind={node.icon} />
           <p className="font-body text-xs" style={{ color: '#9E9890' }}>
@@ -208,7 +207,7 @@ export default function RouteAnimation() {
             left: `${NODES[0].pct}%`,
             height: 2,
             borderRadius: 1,
-            background: 'linear-gradient(to right, #0D7A6A, #10B981)',
+            background: 'linear-gradient(to right, #EA580C, #F97316)',
             width: `${Math.max(0, busPct - NODES[0].pct)}%`,
             transition: `width ${TRAVEL}ms cubic-bezier(0.4, 0, 0.2, 1)`,
           }}
@@ -234,20 +233,18 @@ export default function RouteAnimation() {
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   background: iswarn
                     ? 'linear-gradient(135deg,#FEF3C7,#FDE68A)'
-                    : iscam
-                      ? 'linear-gradient(135deg,#DBEAFE,#BFDBFE)'
-                      : (visited || active)
-                        ? 'linear-gradient(135deg,#D1FAE5,#A7F3D0)'
-                        : 'white',
-                  border: `${active ? 2 : 1.5}px solid ${iswarn ? '#F59E0B' : iscam ? '#3B82F6' : (visited || active) ? '#0D7A6A' : '#E8E3DA'}`,
+                    : (visited || active)
+                      ? 'linear-gradient(135deg,#FFEDD5,#FED7AA)'
+                      : 'white',
+                  border: `${active ? 2 : 1.5}px solid ${iswarn ? '#F59E0B' : (visited || active) ? '#EA580C' : '#E8E3DA'}`,
                   transition: 'all 0.4s ease',
                   position: 'relative', zIndex: 2,
-                  boxShadow: active ? `0 0 0 4px ${iscam ? 'rgba(59,130,246,0.15)' : 'rgba(13,122,106,0.12)'}` : 'none',
+                  boxShadow: active ? '0 0 0 4px rgba(234,88,12,0.12)' : 'none',
                 }}
               >
                 {(visited || (active && !n.warn)) && <CheckIcon />}
                 {iswarn && <span style={{ fontSize: 10, fontWeight: 800, color: '#D97706', lineHeight: 1 }}>!</span>}
-                {iscam && !visited && <span style={{ fontSize: 9, fontWeight: 800, color: '#2563EB', lineHeight: 1 }}>▶</span>}
+                {iscam && !visited && <span style={{ fontSize: 9, fontWeight: 800, color: '#EA580C', lineHeight: 1 }}>▶</span>}
               </div>
               <p
                 className="font-body text-center mt-1.5"
