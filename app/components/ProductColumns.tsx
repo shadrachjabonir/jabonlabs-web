@@ -18,7 +18,7 @@ const K = {
   bgTile:   'linear-gradient(135deg, #FFEDD5, #FED7AA)',
   iconGrad: 'linear-gradient(135deg, #EA580C, #F97316)',
   shadow:   '0 4px 24px rgba(234,88,12,0.07)',
-  badge:    { bg: '#FEF3C7', color: '#D97706', label: '★ Only on Kawan' },
+  badge:    { bg: '#FFEDD5', color: '#EA580C', label: '★ Only on Kawan' },
 }
 
 const S = {
@@ -29,7 +29,7 @@ const S = {
   bgTile:   'linear-gradient(135deg, #DBEAFE, #BFDBFE)',
   iconGrad: 'linear-gradient(135deg, #2563EB, #3B82F6)',
   shadow:   '0 4px 24px rgba(59,130,246,0.06)',
-  badge:    { bg: '#FEF3C7', color: '#D97706', label: '★ Only on SAPA' },
+  badge:    { bg: '#DBEAFE', color: '#2563EB', label: '★ Only on SAPA' },
 }
 
 // ── Data ────────────────────────────────────────────────────────────────────

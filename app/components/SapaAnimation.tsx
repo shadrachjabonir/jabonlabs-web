@@ -50,19 +50,21 @@ const NODES = [
 const DWELL  = 2600
 const TRAVEL = 1300
 
+const BLUE = { bg: 'linear-gradient(135deg,#DBEAFE,#BFDBFE)', border: '#2563EB', text: '#2563EB', glow: 'rgba(37,99,235,0.13)' }
+
 const KIND_COLORS: Record<string, { bg: string; border: string; text: string; glow: string }> = {
-  stream: { bg: 'linear-gradient(135deg,#D1FAE5,#A7F3D0)', border: '#0D7A6A', text: '#0D7A6A', glow: 'rgba(13,122,106,0.12)' },
-  multi:  { bg: 'linear-gradient(135deg,#DBEAFE,#BFDBFE)', border: '#3B82F6', text: '#2563EB', glow: 'rgba(59,130,246,0.15)' },
-  chat:   { bg: 'linear-gradient(135deg,#EDE9FE,#DDD6FE)', border: '#7C3AED', text: '#6D28D9', glow: 'rgba(124,58,237,0.15)' },
-  ai:     { bg: 'linear-gradient(135deg,#D1FAE5,#A7F3D0)', border: '#0D7A6A', text: '#0D7A6A', glow: 'rgba(13,122,106,0.12)' },
-  pay:    { bg: 'linear-gradient(135deg,#FEF3C7,#FDE68A)', border: '#F59E0B', text: '#D97706', glow: 'rgba(245,158,11,0.15)' },
-  done:   { bg: 'linear-gradient(135deg,#D1FAE5,#A7F3D0)', border: '#0D7A6A', text: '#0D7A6A', glow: 'rgba(13,122,106,0.12)' },
+  stream: BLUE,
+  multi:  BLUE,
+  chat:   BLUE,
+  ai:     BLUE,
+  pay:    BLUE,
+  done:   BLUE,
 }
 
-function CheckIcon() {
+function CheckIcon({ color = '#2563EB' }: { color?: string }) {
   return (
     <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden="true">
-      <path d="M1 4l2 2 4-4" stroke="#0D7A6A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M1 4l2 2 4-4" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }
@@ -147,7 +149,7 @@ export default function SapaAnimation() {
           left: `${NODES[0].pct}%`,
           height: 2,
           borderRadius: 1,
-          background: 'linear-gradient(to right, #2563EB, #7C3AED, #0D7A6A)',
+          background: 'linear-gradient(to right, #2563EB, #3B82F6)',
           width: `${Math.max(0, busPct - NODES[0].pct)}%`,
           transition: `width ${TRAVEL}ms cubic-bezier(0.4, 0, 0.2, 1)`,
         }} />
@@ -174,7 +176,7 @@ export default function SapaAnimation() {
                 position: 'relative', zIndex: 2,
                 boxShadow: active ? `0 0 0 4px ${c.glow}` : 'none',
               }}>
-                {visited && <CheckIcon />}
+                {visited && <CheckIcon color={c.text} />}
                 {active && !visited && <span style={{ fontSize: 8, color: c.text, fontWeight: 800 }}>●</span>}
               </div>
               <p className="font-body text-center mt-1.5" style={{
