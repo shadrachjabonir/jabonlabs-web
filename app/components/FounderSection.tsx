@@ -13,12 +13,12 @@ export default function FounderSection() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-5 gap-10 items-start">
 
           {/* ── Left: Photo + attribution ── */}
-          <div className="reveal flex flex-col items-center lg:items-start">
+          <div className="reveal lg:col-span-2 flex flex-col items-center lg:items-start">
             <div
-              className="w-56 h-64 rounded-2xl overflow-hidden mb-6 relative"
+              className="w-48 h-56 rounded-2xl overflow-hidden mb-5 relative"
               style={{ boxShadow: '0 8px 40px rgba(13,122,106,0.15)', border: '3px solid white' }}
             >
               <Image
@@ -26,7 +26,7 @@ export default function FounderSection() {
                 alt="Shadrach, founder of Jabon Labs"
                 fill
                 style={{ objectFit: 'cover', objectPosition: 'center 15%' }}
-                sizes="(max-width: 768px) 224px, 224px"
+                sizes="(max-width: 768px) 192px, 192px"
                 priority
               />
             </div>
@@ -43,7 +43,7 @@ export default function FounderSection() {
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-2 mt-5">
+            <div className="flex flex-wrap gap-2 mt-4">
               {['Enterprise Architecture', 'Domain-Driven Design', 'Multi-Agent AI', 'Kubernetes'].map((skill) => (
                 <span
                   key={skill}
@@ -57,7 +57,7 @@ export default function FounderSection() {
           </div>
 
           {/* ── Right: Quote + body ── */}
-          <div className="reveal reveal-delay-1">
+          <div className="reveal reveal-delay-1 lg:col-span-3">
             <p className="font-heading text-sm uppercase tracking-widest font-semibold mb-6"
                style={{ color: 'var(--color-primary)' }}>
               Founder&rsquo;s Note
@@ -87,7 +87,7 @@ export default function FounderSection() {
               <p>
                 When I looked at how children get to school — a daily operation with dozens of handoffs,
                 multiple stakeholders, real safety stakes, and almost zero real-time intelligence — I
-                saw the kind of problem I&rsquo;d been trained to solve. Kawan is that solution.
+                saw the kind of problem I&rsquo;d been trained to solve. Kawan and SAPA are that answer.
               </p>
             </div>
           </div>
