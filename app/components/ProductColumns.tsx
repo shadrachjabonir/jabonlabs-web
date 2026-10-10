@@ -177,17 +177,27 @@ export default function ProductColumns() {
         </Cell>
       </Row>
 
-      {/* Row 3 — Feature cards */}
-      <Row>
-        <Cell className="py-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
-            {kawanReg.map((f, i) => <FeatureCard key={f.title} f={f} p={K} span2={i === 2} />)}
+      {/* Row 3a — Feature cards top pair */}
+      <Row border={false}>
+        <Cell className="pt-8 pb-2">
+          <div className="grid grid-cols-2 gap-4 h-full items-stretch">
+            {kawanReg.slice(0, 2).map(f => <FeatureCard key={f.title} f={f} p={K} />)}
           </div>
         </Cell>
-        <Cell className="py-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
-            {sapaReg.map((f, i) => <FeatureCard key={f.title} f={f} p={S} span2={i === 2} />)}
+        <Cell className="pt-8 pb-2">
+          <div className="grid grid-cols-2 gap-4 h-full items-stretch">
+            {sapaReg.slice(0, 2).map(f => <FeatureCard key={f.title} f={f} p={S} />)}
           </div>
+        </Cell>
+      </Row>
+
+      {/* Row 3b — Feature cards bottom (full-width spanning card) */}
+      <Row>
+        <Cell className="pt-2 pb-8">
+          <FeatureCard f={kawanReg[2]} p={K} />
+        </Cell>
+        <Cell className="pt-2 pb-8">
+          <FeatureCard f={sapaReg[2]} p={S} />
         </Cell>
       </Row>
 
