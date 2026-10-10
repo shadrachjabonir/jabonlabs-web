@@ -1,25 +1,23 @@
 'use client'
 
 // Two-column problem section: Kawan (coral) left, SAPA (blue) right.
-// On mobile the columns stack — Kawan first, SAPA below.
+// Flat grid layout — each row is shared between columns so heights align.
+// On mobile the sections stack: all Kawan first (DOM order), then SAPA.
 
 import { IconEyeOff, IconRouteDeviation, IconClipboardError,
          IconBroadcast, IconArbitrage, IconMultistream } from './Icons'
-import RouteAnimation from './RouteAnimation'
 import type { ComponentType } from 'react'
 
 const K = {
   accent:   '#EA580C',
   bgTile:   'linear-gradient(135deg, #FFEDD5, #FED7AA)',
   shadow:   '0 2px 16px rgba(234,88,12,0.07)',
-  iconGrad: 'linear-gradient(135deg, #EA580C, #F97316)',
 }
 
 const S = {
   accent:   '#2563EB',
   bgTile:   'linear-gradient(135deg, #DBEAFE, #BFDBFE)',
   shadow:   '0 2px 16px rgba(59,130,246,0.07)',
-  iconGrad: 'linear-gradient(135deg, #2563EB, #3B82F6)',
 }
 
 type Problem = { Icon: ComponentType<{ className?: string }>, title: string, body: string }
@@ -78,71 +76,51 @@ export default function ProblemSection() {
   return (
     <section id="problem" aria-label="The problem"
       className="border-y border-border" style={{ background: 'var(--color-background)' }}>
-      <div className="grid md:grid-cols-2 md:divide-x divide-border">
+      <div className="md:grid md:grid-cols-2">
 
-        {/* ── Kawan column ── */}
-        <div>
-          <div className="px-6 lg:px-10 py-16 border-b border-border">
-            <p className="reveal font-heading text-sm uppercase tracking-widest font-semibold mb-3"
-              style={{ color: K.accent }}>
-              The Problem — Kawan
-            </p>
-            <h2 className="reveal font-heading font-bold text-text-primary"
-              style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2.25rem)', lineHeight: '1.15', letterSpacing: '-0.015em' }}>
-              School transport is the most important journey with the least intelligence.
-            </h2>
-          </div>
+        {/* ── Kawan header (row 1, col 1) ── */}
+        <div className="md:col-start-1 md:row-start-1 px-6 lg:px-10 py-16 border-b border-border md:border-r">
+          <p className="reveal font-heading text-sm uppercase tracking-widest font-semibold mb-3"
+            style={{ color: K.accent }}>
+            The Problem — Kawan
+          </p>
+          <h2 className="reveal font-heading font-bold text-text-primary"
+            style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2.25rem)', lineHeight: '1.15', letterSpacing: '-0.015em' }}>
+            School transport is the most important journey with the least intelligence.
+          </h2>
+        </div>
 
-          <div className="px-6 lg:px-10 py-10 border-b border-border">
-            <div className="grid gap-5">
-              {kawanProblems.map((p, i) => (
-                <div key={p.title} className={`reveal reveal-delay-${i + 1}`}>
-                  <ProblemCard p={p} palette={K} />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="px-6 lg:px-10 py-10">
-            <div className="reveal">
-              <RouteAnimation variant="coral" />
-            </div>
+        {/* ── Kawan cards (row 2, col 1) ── */}
+        <div className="md:col-start-1 md:row-start-2 px-6 lg:px-10 py-10 md:border-r border-border">
+          <div className="grid gap-5">
+            {kawanProblems.map((p, i) => (
+              <div key={p.title} className={`reveal reveal-delay-${i + 1}`}>
+                <ProblemCard p={p} palette={K} />
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* ── SAPA column ── */}
-        <div>
-          <div className="px-6 lg:px-10 py-16 border-b border-border">
-            <p className="reveal font-heading text-sm uppercase tracking-widest font-semibold mb-3"
-              style={{ color: S.accent }}>
-              The Problem — SAPA
-            </p>
-            <h2 className="reveal font-heading font-bold text-text-primary"
-              style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2.25rem)', lineHeight: '1.15', letterSpacing: '-0.015em' }}>
-              Live selling is the fastest-growing channel — and the hardest to run.
-            </h2>
-          </div>
+        {/* ── SAPA header (row 1, col 2) ── */}
+        <div className="md:col-start-2 md:row-start-1 px-6 lg:px-10 py-16 border-b border-border">
+          <p className="reveal font-heading text-sm uppercase tracking-widest font-semibold mb-3"
+            style={{ color: S.accent }}>
+            The Problem — SAPA
+          </p>
+          <h2 className="reveal font-heading font-bold text-text-primary"
+            style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2.25rem)', lineHeight: '1.15', letterSpacing: '-0.015em' }}>
+            Live selling is the fastest-growing channel — and the hardest to run.
+          </h2>
+        </div>
 
-          <div className="px-6 lg:px-10 py-10 border-b border-border">
-            <div className="grid gap-5">
-              {sapaProblems.map((p, i) => (
-                <div key={p.title} className={`reveal reveal-delay-${i + 1}`}>
-                  <ProblemCard p={p} palette={S} />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="px-6 lg:px-10 py-10">
-            <div className="reveal rounded-2xl border border-border p-8 text-center"
-              style={{ background: S.bgTile, boxShadow: S.shadow }}>
-              <p className="font-heading font-semibold text-text-primary text-base mb-3" style={{ color: S.accent }}>
-                One seller. Three platforms. Zero missed orders.
-              </p>
-              <p className="font-body text-text-secondary text-sm leading-relaxed">
-                SAPA lets one person broadcast to Instagram, Facebook and TikTok simultaneously — while the AI handles every order, every price check, every payment.
-              </p>
-            </div>
+        {/* ── SAPA cards (row 2, col 2) ── */}
+        <div className="md:col-start-2 md:row-start-2 px-6 lg:px-10 py-10">
+          <div className="grid gap-5">
+            {sapaProblems.map((p, i) => (
+              <div key={p.title} className={`reveal reveal-delay-${i + 1}`}>
+                <ProblemCard p={p} palette={S} />
+              </div>
+            ))}
           </div>
         </div>
 
