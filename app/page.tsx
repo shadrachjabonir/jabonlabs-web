@@ -25,6 +25,7 @@ import HeroSection from './components/HeroSection'
 import TrustBar from './components/TrustBar'
 import ProblemSection from './components/ProblemSection'
 import ProductSection from './components/ProductSection'
+import SapaSection from './components/SapaSection'
 import TechSection from './components/TechSection'
 import VisionSection from './components/VisionSection'
 import FounderSection from './components/FounderSection'
@@ -38,28 +39,31 @@ export default function HomePage() {
       <Navbar />
 
       <main>
-        {/* § 1 — Full-viewport hero with animated grid background */}
+        {/* § 1 — Hero: Jabon Labs + both products */}
         <HeroSection />
 
-        {/* § 2 — Trust anchor: "Trusted by schools and parents" */}
+        {/* § 2 — Two-product intro strip */}
         <TrustBar />
 
-        {/* § 3 — Problem statement: the daily school transport visibility gap */}
+        {/* § 3 — Problem statement (school transport visibility gap) */}
         <ProblemSection />
 
-        {/* § 4 — Kawan product spotlight + How It Works steps */}
+        {/* § 4 — Kawan product spotlight */}
         <ProductSection />
 
-        {/* § 5 — Technical infrastructure credibility */}
+        {/* § 5 — SAPA product spotlight */}
+        <SapaSection />
+
+        {/* § 6 — Technical infrastructure credibility */}
         <TechSection />
 
-        {/* § 6 — Cinematic vision statement: the long arc */}
+        {/* § 7 — Vision statement */}
         <VisionSection />
 
-        {/* § 7 — Founder's note: humanises the brand */}
+        {/* § 8 — Founder's note */}
         <FounderSection />
 
-        {/* § 8 — Email waitlist / Early Access CTA */}
+        {/* § 9 — Early Access CTA */}
         <WaitlistSection />
       </main>
 

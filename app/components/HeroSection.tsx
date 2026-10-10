@@ -63,7 +63,7 @@ export default function HeroSection() {
             style={{ background: 'var(--color-primary)' }}
           />
           <span className="font-heading text-xs font-semibold text-text-secondary uppercase tracking-widest">
-            Kawan - Kawal Anak
+            Amplifying Human Potential
           </span>
         </div>
 
@@ -77,7 +77,7 @@ export default function HeroSection() {
             animationDelay: '0.1s',
           }}
         >
-          Every child home.{' '}
+          Intelligent apps for{' '}
           <span
             className="relative inline-block"
             style={{
@@ -87,7 +87,7 @@ export default function HeroSection() {
               WebkitTextFillColor: 'transparent',
             }}
           >
-            Safe. On time.
+            real lives.
           </span>
         </h1>
 
@@ -100,9 +100,25 @@ export default function HeroSection() {
             animationDelay: '0.22s',
           }}
         >
-          Jabon Labs builds intelligent systems that amplify human potential. Kawan gives parents,
-          schools and drivers real-time AI-powered visibility into every school journey.
+          Jabon Labs builds AI-powered software that solves real, high-stakes problems.
+          Two products in the world — one keeps children safe on their way to school, the other helps sellers go live and sell smarter.
         </p>
+
+        {/* Product pills */}
+        <div className="flex flex-wrap gap-3 justify-center mb-10 animate-fade-up" style={{ animationDelay: '0.28s' }}>
+          <a href="#kawan"
+            className="flex items-center gap-2.5 px-5 py-2.5 rounded-xl border bg-white/80 backdrop-blur-sm font-heading font-semibold text-sm transition-all duration-200 hover:-translate-y-0.5"
+            style={{ borderColor: '#A7F3D0', color: '#0D7A6A', boxShadow: '0 2px 12px rgba(13,122,106,0.10)' }}>
+            <span className="w-2 h-2 rounded-full" style={{ background: '#0D7A6A' }} />
+            Kawan — Kawal Anak
+          </a>
+          <a href="#sapa"
+            className="flex items-center gap-2.5 px-5 py-2.5 rounded-xl border bg-white/80 backdrop-blur-sm font-heading font-semibold text-sm transition-all duration-200 hover:-translate-y-0.5"
+            style={{ borderColor: '#BFDBFE', color: '#2563EB', boxShadow: '0 2px 12px rgba(59,130,246,0.10)' }}>
+            <span className="w-2 h-2 rounded-full" style={{ background: '#2563EB' }} />
+            SAPA — Siaran Pasar
+          </a>
+        </div>
 
         {/* CTAs */}
         <div
@@ -117,10 +133,10 @@ export default function HeroSection() {
             Request Early Access
           </a>
           <a
-            href="#products"
+            href="#kawan"
             className="px-7 py-3.5 rounded-xl font-heading font-semibold text-sm text-text-primary border border-border bg-white/70 backdrop-blur-sm hover:bg-white hover:border-primary/30 transition-all duration-200"
           >
-            See How Kawan Works →
+            Explore our products →
           </a>
         </div>
 
@@ -129,7 +145,7 @@ export default function HeroSection() {
           className="mt-8 text-text-muted font-body text-sm animate-fade-in"
           style={{ animationDelay: '0.5s' }}
         >
-          Trusted by schools and parents · No commitment required
+          Building for schools, parents & sellers · No commitment required
         </p>
       </div>
 
