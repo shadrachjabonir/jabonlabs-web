@@ -62,7 +62,7 @@ export default function VisionSection() {
 
         <p className="reveal reveal-delay-2 font-body text-text-secondary text-center mx-auto max-w-2xl mb-16"
            style={{ fontSize: '1.1rem', lineHeight: '1.75' }}>
-          We start with school transport. We don&rsquo;t stop there.
+          We start with school safety and live commerce. We don&rsquo;t stop there.
         </p>
 
         {/* Pillars */}
