@@ -113,15 +113,35 @@ function WarnIcon() {
   )
 }
 
-function CheckIcon() {
+function CheckIcon({ color = '#0D7A6A' }: { color?: string }) {
   return (
     <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden="true">
-      <path d="M1 4l2 2 4-4" stroke="#0D7A6A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M1 4l2 2 4-4" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }
 
-export default function RouteAnimation() {
+const PALETTE = {
+  teal: {
+    line:       'linear-gradient(to right, #0D7A6A, #059669)',
+    nodeBg:     'linear-gradient(135deg,#D1FAE5,#A7F3D0)',
+    nodeBorder: '#0D7A6A',
+    glow:       'rgba(13,122,106,0.12)',
+    caption:    '#0D7A6A',
+    check:      '#0D7A6A',
+  },
+  coral: {
+    line:       'linear-gradient(to right, #EA580C, #F97316)',
+    nodeBg:     'linear-gradient(135deg,#FFEDD5,#FED7AA)',
+    nodeBorder: '#EA580C',
+    glow:       'rgba(234,88,12,0.12)',
+    caption:    '#EA580C',
+    check:      '#0D7A6A',
+  },
+}
+
+export default function RouteAnimation({ variant = 'teal' }: { variant?: 'teal' | 'coral' }) {
+  const p = PALETTE[variant]
   const [step,    setStep]    = useState(0)
   const [busPct,  setBusPct]  = useState(NODES[0].pct)
   const [captKey, setCaptKey] = useState(0)
@@ -171,14 +191,14 @@ export default function RouteAnimation() {
           {node.warn && <WarnIcon />}
           <p
             className="font-heading font-semibold text-sm"
-            style={{ color: node.warn ? '#D97706' : '#EA580C' }}
+            style={{ color: node.warn ? '#D97706' : p.caption }}
           >
             {node.title}
           </p>
         </div>
         <div
           className="flex items-center justify-center gap-1.5 mt-1"
-          style={{ color: node.warn ? '#D97706' : '#EA580C' }}
+          style={{ color: node.warn ? '#D97706' : p.caption }}
         >
           <SubIcon kind={node.icon} />
           <p className="font-body text-xs" style={{ color: '#9E9890' }}>
@@ -207,7 +227,7 @@ export default function RouteAnimation() {
             left: `${NODES[0].pct}%`,
             height: 2,
             borderRadius: 1,
-            background: 'linear-gradient(to right, #EA580C, #F97316)',
+            background: p.line,
             width: `${Math.max(0, busPct - NODES[0].pct)}%`,
             transition: `width ${TRAVEL}ms cubic-bezier(0.4, 0, 0.2, 1)`,
           }}
@@ -234,17 +254,17 @@ export default function RouteAnimation() {
                   background: iswarn
                     ? 'linear-gradient(135deg,#FEF3C7,#FDE68A)'
                     : (visited || active)
-                      ? 'linear-gradient(135deg,#FFEDD5,#FED7AA)'
+                      ? p.nodeBg
                       : 'white',
-                  border: `${active ? 2 : 1.5}px solid ${iswarn ? '#F59E0B' : (visited || active) ? '#EA580C' : '#E8E3DA'}`,
+                  border: `${active ? 2 : 1.5}px solid ${iswarn ? '#F59E0B' : (visited || active) ? p.nodeBorder : '#E8E3DA'}`,
                   transition: 'all 0.4s ease',
                   position: 'relative', zIndex: 2,
-                  boxShadow: active ? '0 0 0 4px rgba(234,88,12,0.12)' : 'none',
+                  boxShadow: active ? `0 0 0 4px ${p.glow}` : 'none',
                 }}
               >
-                {(visited || (active && !n.warn)) && <CheckIcon />}
+                {(visited || (active && !n.warn)) && <CheckIcon color={p.check} />}
                 {iswarn && <span style={{ fontSize: 10, fontWeight: 800, color: '#D97706', lineHeight: 1 }}>!</span>}
-                {iscam && !visited && <span style={{ fontSize: 9, fontWeight: 800, color: '#EA580C', lineHeight: 1 }}>▶</span>}
+                {iscam && !visited && <span style={{ fontSize: 9, fontWeight: 800, color: p.caption, lineHeight: 1 }}>▶</span>}
               </div>
               <p
                 className="font-body text-center mt-1.5"

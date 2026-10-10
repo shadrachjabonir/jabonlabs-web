@@ -125,7 +125,7 @@ export default function ProductSection() {
 
       {/* Animated route */}
       <div className="reveal mb-14">
-        <RouteAnimation />
+        <RouteAnimation variant="coral" />
       </div>
 
       {/* How It Works */}
