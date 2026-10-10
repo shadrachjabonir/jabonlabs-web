@@ -16,9 +16,26 @@ export default function WaitlistSection() {
     }
     setStatus('loading')
     setError('')
-    // TODO: Replace with real API — e.g. POST /api/waitlist
-    await new Promise((r) => setTimeout(r, 800))
-    setStatus('success')
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/shadrach@jabonlabs.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          email,
+          _subject: 'New Early Access Request — Jabon Labs',
+          _captcha: 'false',
+        }),
+      })
+      const data = await res.json()
+      if (data.success === 'true' || data.success === true) {
+        setStatus('success')
+      } else {
+        throw new Error('Submission failed')
+      }
+    } catch {
+      setError('Something went wrong. Please try again.')
+      setStatus('error')
+    }
   }
 
   return (
@@ -33,7 +50,7 @@ export default function WaitlistSection() {
           className="reveal rounded-2xl p-10 sm:p-14 bg-white relative overflow-hidden"
           style={{ boxShadow: '0 8px 48px rgba(13,122,106,0.12)', border: '1px solid #E8E3DA' }}
         >
-          {/* Warm accent blob */}
+          {/* Warm accent blobs */}
           <div
             className="absolute -top-12 -right-12 w-48 h-48 rounded-full opacity-30 blur-3xl pointer-events-none"
             style={{ background: 'radial-gradient(circle, #A7F3D0, #6EE7B7)' }}
@@ -53,10 +70,10 @@ export default function WaitlistSection() {
             className="font-heading font-bold text-text-primary mb-3"
             style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', lineHeight: '1.2', letterSpacing: '-0.01em' }}
           >
-            Be the first to bring Kawan to your school.
+            Be among the first to use Jabon Labs products.
           </h2>
           <p className="text-text-secondary font-body text-base mb-8" style={{ lineHeight: '1.7' }}>
-            Join the early access programme.
+            Whether you run a school transport programme or sell live online — join the early access programme and we will reach out when your product is ready.
           </p>
 
           {status === 'success' ? (
@@ -115,7 +132,7 @@ export default function WaitlistSection() {
               )}
 
               <p className="mt-4 text-text-muted font-body text-xs">
-                We respect your inbox. Unsubscribe anytime. No spam, ever.
+                We respect your inbox. Unsubscribe anytime.
               </p>
             </form>
           )}
