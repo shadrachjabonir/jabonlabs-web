@@ -2,12 +2,42 @@
 
 import { useEffect, useRef, useState } from 'react'
 
+function SubIcon({ kind }: { kind: string }) {
+  if (kind === 'cam') return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M15 10l4.553-2.277A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/>
+    </svg>
+  )
+  if (kind === 'check') return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+    </svg>
+  )
+  if (kind === 'bell') return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 00-9.33-5M15 17H9m6 0a3 3 0 01-6 0M9.01 7.02A6 6 0 006 11v3.159c0 .538-.214 1.055-.595 1.436L4 17"/>
+    </svg>
+  )
+  if (kind === 'relay') return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+    </svg>
+  )
+  if (kind === 'home') return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+    </svg>
+  )
+  return null
+}
+
 const NODES = [
   {
     pct: 4,
     label: 'School',
     title: 'Journey begins',
     sub: 'All students checked in via Kawan',
+    icon: 'check',
     warn: false,
     cam: false,
   },
@@ -16,6 +46,7 @@ const NODES = [
     label: 'Stop 1',
     title: 'Aisha boards',
     sub: 'Parent notified instantly — confirmed on bus',
+    icon: 'bell',
     warn: false,
     cam: false,
   },
@@ -24,6 +55,7 @@ const NODES = [
     label: 'Cabin cam',
     title: 'Parent watches live',
     sub: 'Live in-car feed open in parent app',
+    icon: 'cam',
     warn: false,
     cam: true,
   },
@@ -32,6 +64,7 @@ const NODES = [
     label: 'AI relay',
     title: 'Parent messages driver',
     sub: 'AI admin relays "Please drop Aisha first" — driver notified',
+    icon: 'relay',
     warn: false,
     cam: false,
   },
@@ -40,6 +73,7 @@ const NODES = [
     label: 'Stop 3',
     title: 'Route deviation detected',
     sub: 'AI alert sent to school and parents in < 1 s',
+    icon: 'bell',
     warn: true,
     cam: false,
   },
@@ -48,6 +82,7 @@ const NODES = [
     label: 'Home',
     title: 'Every child home safe',
     sub: 'Zero incidents · daily report generated',
+    icon: 'home',
     warn: false,
     cam: false,
   },
@@ -142,9 +177,15 @@ export default function RouteAnimation() {
             {node.title}
           </p>
         </div>
-        <p className="font-body text-xs mt-1" style={{ color: '#9E9890' }}>
-          {node.sub}
-        </p>
+        <div
+          className="flex items-center justify-center gap-1.5 mt-1"
+          style={{ color: node.warn ? '#D97706' : isCamStep ? '#2563EB' : '#0D7A6A' }}
+        >
+          <SubIcon kind={node.icon} />
+          <p className="font-body text-xs" style={{ color: '#9E9890' }}>
+            {node.sub}
+          </p>
+        </div>
       </div>
 
       {/* Route track */}
