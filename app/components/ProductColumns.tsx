@@ -117,9 +117,9 @@ function Row({ children, py = 'py-10', border = true }: { children: React.ReactN
   )
 }
 
-function Cell({ children, className = '', style }: { children: React.ReactNode, className?: string, style?: React.CSSProperties }) {
+function Cell({ children, className = '', style, id }: { children: React.ReactNode, className?: string, style?: React.CSSProperties, id?: string }) {
   return (
-    <div className={`px-6 lg:px-10 flex flex-col ${className}`} style={style}>
+    <div id={id} className={`px-6 lg:px-10 flex flex-col ${className}`} style={style}>
       {children}
     </div>
   )
@@ -137,7 +137,7 @@ export default function ProductColumns() {
 
       {/* Row 1 — Headers */}
       <Row py="py-12">
-        <Cell className="py-12 text-center items-center justify-start" style={{ minHeight: 220 }}>
+        <Cell id="kawan" className="py-12 text-center items-center justify-start" style={{ minHeight: 220 }}>
           <p className="reveal font-heading text-sm uppercase tracking-widest font-semibold mb-3" style={{ color: K.accent }}>
             Product — Kawan
           </p>
@@ -149,7 +149,7 @@ export default function ProductColumns() {
             Kawan means <em>friend</em> in Malay — the AI companion that watches over every bus, every route, every child.
           </p>
         </Cell>
-        <Cell className="py-12 text-center items-center justify-start" style={{ minHeight: 220 }}>
+        <Cell id="sapa" className="py-12 text-center items-center justify-start" style={{ minHeight: 220 }}>
           <p className="reveal font-heading text-sm uppercase tracking-widest font-semibold mb-3" style={{ color: S.accent }}>
             Product — SAPA
           </p>
