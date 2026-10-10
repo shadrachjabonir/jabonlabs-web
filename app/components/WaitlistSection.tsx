@@ -56,7 +56,7 @@ export default function WaitlistSection() {
             Be the first to bring Kawan to your school.
           </h2>
           <p className="text-text-secondary font-body text-base mb-8" style={{ lineHeight: '1.7' }}>
-            Join the early access programme. No commitment required.
+            Join the early access programme.
           </p>
 
           {status === 'success' ? (

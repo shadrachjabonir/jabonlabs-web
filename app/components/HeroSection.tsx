@@ -145,7 +145,7 @@ export default function HeroSection() {
           className="mt-8 text-text-muted font-body text-sm animate-fade-in"
           style={{ animationDelay: '0.5s' }}
         >
-          Building for schools, parents & sellers · No commitment required
+          Kawan · SAPA · Jabon Labs
         </p>
       </div>
 
