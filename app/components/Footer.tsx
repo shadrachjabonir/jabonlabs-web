@@ -5,9 +5,8 @@ const year = new Date().getFullYear()
 
 const footerLinks = {
   Products: [
-    { label: 'Kawan',    href: '#products' },
-    { label: 'Roadmap',  href: '#' },
-    { label: 'Pricing',  href: '#' },
+    { label: 'Kawan',    href: '#kawan' },
+    { label: 'SAPA',     href: '#sapa' },
   ],
   Company: [
     { label: 'About',    href: '#founder' },

@@ -1,0 +1,149 @@
+// ─── SapaSection ──────────────────────────────────────────────────────────────
+// SAPA (Siaran Pasar) product spotlight — half-width column layout.
+
+import { IconBroadcast, IconMultistream, IconArbitrage, IconQR, IconRelay } from './Icons'
+import SapaAnimation from './SapaAnimation'
+import type { ComponentType } from 'react'
+
+const features: { Icon: ComponentType<{ className?: string }>, title: string, body: string, highlight?: boolean }[] = [
+  {
+    Icon: IconBroadcast,
+    title: 'Browser-Native Live Stream',
+    body: 'Go live directly from any browser — no OBS, no downloads. WebRTC captures your camera; SAPA handles the rest.',
+    highlight: true,
+  },
+  {
+    Icon: IconMultistream,
+    title: 'Multistream to 3 Platforms',
+    body: 'One stream, three audiences. SAPA restreams over RTMP to Instagram, Facebook and TikTok simultaneously.',
+    highlight: true,
+  },
+  {
+    Icon: IconArbitrage,
+    title: 'AI Dropship Arbitrage',
+    body: 'Viewers order via WhatsApp or Telegram. SAPA AI compares prices on Shopee, Tokopedia and TikTok Shop, adds your margin, and quotes the buyer instantly.',
+  },
+  {
+    Icon: IconQR,
+    title: 'QRIS Payment in Chat',
+    body: 'Midtrans QRIS is generated and sent directly in the chat — no redirects, no checkout pages, no abandoned carts.',
+  },
+  {
+    Icon: IconRelay,
+    title: 'Hybrid Fulfilment Dashboard',
+    body: 'After payment, the admin dashboard shows confirmed orders. Human admins place the marketplace purchase — keeping the system safe from bot detection.',
+  },
+]
+
+const steps = [
+  { num: '01', title: 'Set up your stream', body: 'Enter RTMP keys for each platform once. Then go live any time from your browser.' },
+  { num: '02', title: 'Sync your catalog', body: 'Connect your Google Sheets product list. SAPA shows items as overlays during the broadcast.' },
+  { num: '03', title: 'Viewers order via chat', body: 'WhatsApp or Telegram message triggers the AI — it identifies the product, checks prices and sends a QRIS.' },
+  { num: '04', title: 'Collect and fulfil', body: 'Payment confirmed. Admin dashboard queues the order for purchase on the cheapest marketplace.' },
+]
+
+export default function SapaSection() {
+  return (
+    <section
+      id="sapa"
+      className="py-16 px-6 lg:px-10"
+      style={{ background: 'var(--color-background)' }}
+      aria-label="SAPA product"
+    >
+      {/* Header */}
+      {/* Header — fixed min-height matches Kawan column */}
+      <div className="text-center mb-12 flex flex-col items-center justify-start" style={{ minHeight: 200 }}>
+        <p className="reveal font-heading text-sm uppercase tracking-widest font-semibold mb-3"
+           style={{ color: '#2563EB' }}>
+          Product — SAPA
+        </p>
+        <h2
+          className="reveal reveal-delay-1 font-heading font-bold text-text-primary mb-4"
+          style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2.25rem)', lineHeight: '1.15', letterSpacing: '-0.015em' }}
+        >
+          Sell live. Everywhere. Automatically.
+        </h2>
+        <p className="reveal reveal-delay-2 font-body text-text-secondary text-sm mx-auto" style={{ lineHeight: '1.75', maxWidth: 380 }}>
+          SAPA means <em>greet</em> in Malay and Indonesian — the AI that greets every buyer, finds the best price, and closes the sale.
+        </p>
+      </div>
+
+      {/* Highlight cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4" style={{ alignItems: 'stretch' }}>
+        {features.filter(f => f.highlight).map((f, i) => (
+          <div
+            key={f.title}
+            className={`reveal reveal-delay-${i + 2} card-hover rounded-2xl border p-6`}
+            style={{
+              background: 'linear-gradient(135deg, #EFF6FF, #DBEAFE)',
+              borderColor: '#BFDBFE',
+              boxShadow: '0 4px 24px rgba(59,130,246,0.10)',
+            }}
+          >
+            <div
+              className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
+              style={{ background: 'linear-gradient(135deg, #2563EB, #3B82F6)', color: 'white' }}
+            >
+              <f.Icon className="w-5 h-5" />
+            </div>
+            <div className="inline-flex items-center gap-1.5 mb-3 px-2.5 py-0.5 rounded-full text-xs font-heading font-semibold"
+              style={{ background: '#FEF3C7', color: '#D97706' }}>
+              ★ Only on SAPA
+            </div>
+            <h3 className="font-heading font-semibold text-text-primary text-sm mb-2">{f.title}</h3>
+            <p className="font-body text-text-secondary text-xs leading-relaxed">{f.body}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Feature cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-14">
+        {features.filter(f => !f.highlight).map((f, i) => (
+          <div
+            key={f.title}
+            className={`reveal reveal-delay-${i + 2} card-hover rounded-2xl bg-white border border-border p-5 ${i === 2 ? 'sm:col-span-2' : ''}`}
+            style={{ boxShadow: '0 4px 24px rgba(59,130,246,0.06)' }}
+          >
+            <div
+              className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
+              style={{ background: 'linear-gradient(135deg, #DBEAFE, #BFDBFE)', color: '#2563EB' }}
+            >
+              <f.Icon className="w-5 h-5" />
+            </div>
+            <h3 className="font-heading font-semibold text-text-primary text-sm mb-2">{f.title}</h3>
+            <p className="font-body text-text-secondary text-xs leading-relaxed">{f.body}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Animated SAPA flow */}
+      <div className="reveal mb-14">
+        <SapaAnimation />
+      </div>
+
+      {/* How It Works */}
+      <div
+        className="reveal rounded-2xl bg-white border border-border p-8"
+        style={{ boxShadow: '0 4px 32px rgba(59,130,246,0.07)' }}
+      >
+        <h3 className="font-heading font-bold text-text-primary text-lg text-center mb-8">
+          How It Works
+        </h3>
+        <div className="grid grid-cols-2 gap-5">
+          {steps.map((s, i) => (
+            <div key={s.num} className={`reveal reveal-delay-${i + 1} flex flex-col gap-2`}>
+              <div
+                className="w-9 h-9 rounded-xl font-heading font-bold text-xs flex items-center justify-center"
+                style={{ background: 'linear-gradient(135deg, #DBEAFE, #BFDBFE)', color: '#2563EB' }}
+              >
+                {s.num}
+              </div>
+              <h4 className="font-heading font-semibold text-text-primary text-xs">{s.title}</h4>
+              <p className="font-body text-text-muted text-xs leading-relaxed">{s.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

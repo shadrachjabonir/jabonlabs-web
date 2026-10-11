@@ -23,12 +23,13 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: 'Jabon Labs — Amplifying Human Potential Through Science and Technology',
   description:
-    'Jabon Labs builds intelligent systems that make everyday life safer, smarter, and more efficient. Starting with AI-enhanced school transport safety. Expanding to science itself.',
+    'Jabon Labs builds AI-powered software for real lives. Kawan keeps children safe on school journeys. SAPA helps sellers go live and sell smarter across every platform.',
   keywords: [
     'Jabon Labs',
-    'AI safety',
-    'school transport',
-    'Kawan app',
+    'Kawan',
+    'SAPA',
+    'AI school transport safety',
+    'live commerce',
     'multi-agent AI',
     'deep tech',
     'science and technology',
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'Shadrach Jabonir', url: 'https://jabonlabs.com' }],
   openGraph: {
     title: 'Jabon Labs',
-    description: 'Amplifying Human Potential Through Science and Technology',
+    description: 'AI-powered software for real lives — Kawan for school safety, SAPA for live commerce.',
     url: 'https://jabonlabs.com',
     siteName: 'Jabon Labs',
     type: 'website',
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Jabon Labs',
-    description: 'Amplifying Human Potential Through Science and Technology',
+    description: 'AI-powered software for real lives — Kawan for school safety, SAPA for live commerce.',
   },
   robots: {
     index: true,

@@ -168,6 +168,64 @@ export function IconRelay({ className = '', style }: IconProps) {
   )
 }
 
+// Broadcast signal — SAPA live stream
+export function IconBroadcast({ className = '', style }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round"
+      className={className} style={style} aria-hidden="true">
+      <circle cx="12" cy="13" r="2.5" stroke="currentColor" />
+      <path d="M8 9.5a6 6 0 0 1 8 0" stroke="currentColor" />
+      <path d="M5 7a10 10 0 0 1 14 0" stroke="currentColor" strokeOpacity="0.5" />
+      <line x1="12" y1="15.5" x2="12" y2="20" stroke="currentColor" />
+    </svg>
+  )
+}
+
+// Split arrows — multistream / three platforms
+export function IconMultistream({ className = '', style }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+      className={className} style={style} aria-hidden="true">
+      <line x1="4" y1="12" x2="10" y2="12" stroke="currentColor" />
+      <path d="M10 12 L16 6" stroke="currentColor" />
+      <path d="M10 12 L16 12" stroke="currentColor" />
+      <path d="M10 12 L16 18" stroke="currentColor" />
+      <circle cx="18" cy="6"  r="2" stroke="currentColor" />
+      <circle cx="18" cy="12" r="2" stroke="currentColor" />
+      <circle cx="18" cy="18" r="2" stroke="currentColor" />
+    </svg>
+  )
+}
+
+// Price tag / arbitrage
+export function IconArbitrage({ className = '', style }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+      className={className} style={style} aria-hidden="true">
+      <path d="M3 7h8l9 9-9 9-9-9V7z" stroke="currentColor" />
+      <circle cx="8" cy="12" r="1.5" stroke="currentColor" />
+      <line x1="14" y1="4" x2="20" y2="4" stroke="currentColor" strokeOpacity="0.5" />
+      <line x1="17" y1="1" x2="17" y2="7" stroke="currentColor" strokeOpacity="0.5" />
+    </svg>
+  )
+}
+
+// QR code square — payment
+export function IconQR({ className = '', style }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+      className={className} style={style} aria-hidden="true">
+      <rect x="3"  y="3"  width="7" height="7" rx="1" stroke="currentColor" />
+      <rect x="14" y="3"  width="7" height="7" rx="1" stroke="currentColor" />
+      <rect x="3"  y="14" width="7" height="7" rx="1" stroke="currentColor" />
+      <rect x="5"  y="5"  width="3" height="3" fill="currentColor" stroke="none" />
+      <rect x="16" y="5"  width="3" height="3" fill="currentColor" stroke="none" />
+      <rect x="5"  y="16" width="3" height="3" fill="currentColor" stroke="none" />
+      <line x1="14" y1="14" x2="21" y2="21" stroke="currentColor" strokeOpacity="0.5" />
+    </svg>
+  )
+}
+
 // Star/verified badge
 export function IconVerified({ className = '', style }: IconProps) {
   return (
