@@ -1,8 +1,8 @@
 'use client'
 
-// Two-column problem section: Kawan (coral) left, SAPA (blue) right.
-// Flat grid layout — each row is shared between columns so heights align.
-// On mobile the sections stack: all Kawan first (DOM order), then SAPA.
+// Full-width problem section: Kawan (coral) then SAPA (blue), each with
+// 3 problem cards laid out horizontally in one row on desktop.
+// On mobile cards stack to a single column.
 
 import { IconEyeOff, IconRouteDeviation, IconClipboardError,
          IconBroadcast, IconArbitrage, IconMultistream } from './Icons'
@@ -60,14 +60,41 @@ const sapaProblems: Problem[] = [
 
 function ProblemCard({ p, palette }: { p: Problem, palette: typeof K }) {
   return (
-    <div className="card-hover rounded-2xl bg-white border border-border p-7"
+    <div className="card-hover rounded-2xl bg-white border border-border p-7 flex flex-col h-full"
       style={{ boxShadow: palette.shadow }}>
       <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
         style={{ background: palette.bgTile, color: palette.accent }}>
         <p.Icon className="w-5 h-5" />
       </div>
       <h3 className="font-heading font-semibold text-text-primary text-base mb-2">{p.title}</h3>
-      <p className="font-body text-text-secondary text-sm leading-relaxed">{p.body}</p>
+      <p className="font-body text-text-secondary text-sm leading-relaxed flex-1">{p.body}</p>
+    </div>
+  )
+}
+
+function ProductBlock({ label, headline, problems, palette }: {
+  label: string
+  headline: string
+  problems: Problem[]
+  palette: typeof K
+}) {
+  return (
+    <div className="px-6 lg:px-10 py-16">
+      <p className="reveal font-heading text-sm uppercase tracking-widest font-semibold mb-3"
+        style={{ color: palette.accent }}>
+        {label}
+      </p>
+      <h2 className="reveal font-heading font-bold text-text-primary mb-10"
+        style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2.25rem)', lineHeight: '1.15', letterSpacing: '-0.015em' }}>
+        {headline}
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-stretch">
+        {problems.map((p, i) => (
+          <div key={p.title} className={`reveal reveal-delay-${i + 1}`}>
+            <ProblemCard p={p} palette={palette} />
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
@@ -76,55 +103,23 @@ export default function ProblemSection() {
   return (
     <section id="problem" aria-label="The problem"
       className="border-y border-border" style={{ background: 'var(--color-background)' }}>
-      <div className="md:grid md:grid-cols-2">
 
-        {/* ── Kawan header (row 1, col 1) ── */}
-        <div className="md:col-start-1 md:row-start-1 px-6 lg:px-10 py-16 border-b border-border md:border-r">
-          <p className="reveal font-heading text-sm uppercase tracking-widest font-semibold mb-3"
-            style={{ color: K.accent }}>
-            The Problem — Kawan
-          </p>
-          <h2 className="reveal font-heading font-bold text-text-primary"
-            style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2.25rem)', lineHeight: '1.15', letterSpacing: '-0.015em' }}>
-            School transport is the most important journey with the least intelligence.
-          </h2>
-        </div>
-
-        {/* ── Kawan cards (row 2, col 1) ── */}
-        <div className="md:col-start-1 md:row-start-2 px-6 lg:px-10 py-10 md:border-r border-border">
-          <div className="grid gap-5">
-            {kawanProblems.map((p, i) => (
-              <div key={p.title} className={`reveal reveal-delay-${i + 1}`}>
-                <ProblemCard p={p} palette={K} />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ── SAPA header (row 1, col 2) ── */}
-        <div className="md:col-start-2 md:row-start-1 px-6 lg:px-10 py-16 border-b border-border">
-          <p className="reveal font-heading text-sm uppercase tracking-widest font-semibold mb-3"
-            style={{ color: S.accent }}>
-            The Problem — SAPA
-          </p>
-          <h2 className="reveal font-heading font-bold text-text-primary"
-            style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2.25rem)', lineHeight: '1.15', letterSpacing: '-0.015em' }}>
-            Live selling is the fastest-growing channel — and the hardest to run.
-          </h2>
-        </div>
-
-        {/* ── SAPA cards (row 2, col 2) ── */}
-        <div className="md:col-start-2 md:row-start-2 px-6 lg:px-10 py-10">
-          <div className="grid gap-5">
-            {sapaProblems.map((p, i) => (
-              <div key={p.title} className={`reveal reveal-delay-${i + 1}`}>
-                <ProblemCard p={p} palette={S} />
-              </div>
-            ))}
-          </div>
-        </div>
-
+      <div className="border-b border-border">
+        <ProductBlock
+          label="The Problem — Kawan"
+          headline="School transport is the most important journey with the least intelligence."
+          problems={kawanProblems}
+          palette={K}
+        />
       </div>
+
+      <ProductBlock
+        label="The Problem — SAPA"
+        headline="Live selling is the fastest-growing channel — and the hardest to run."
+        problems={sapaProblems}
+        palette={S}
+      />
+
     </section>
   )
 }
